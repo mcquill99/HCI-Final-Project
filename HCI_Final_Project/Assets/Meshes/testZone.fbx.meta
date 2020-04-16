@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 15c8a97649ae77f4d90172ccad02d870
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cube
+    100002: Mball.002
+    100004: Mball.009
+    100006: Plane
+    100008: //RootNode
+    100010: Floor
+    100012: FloorSimple
+    100014: InnerPillar
+    100016: InnerPillarSimple
+    100018: OuterPillar
+    100020: OuterPillarSimple
+    100022: Platforms
+    100024: PlatformsSimple
+    400000: Cube
+    400002: Mball.002
+    400004: Mball.009
+    400006: Plane
+    400008: //RootNode
+    400010: Floor
+    400012: FloorSimple
+    400014: InnerPillar
+    400016: InnerPillarSimple
+    400018: OuterPillar
+    400020: OuterPillarSimple
+    400022: Platforms
+    400024: PlatformsSimple
+    2100000: No Name
+    2300000: Cube
+    2300002: Mball.002
+    2300004: Mball.009
+    2300006: Plane
+    2300008: Floor
+    2300010: FloorSimple
+    2300012: InnerPillar
+    2300014: InnerPillarSimple
+    2300016: OuterPillar
+    2300018: OuterPillarSimple
+    2300020: Platforms
+    2300022: PlatformsSimple
+    3300000: Cube
+    3300002: Mball.002
+    3300004: Mball.009
+    3300006: Plane
+    3300008: Floor
+    3300010: FloorSimple
+    3300012: InnerPillar
+    3300014: InnerPillarSimple
+    3300016: OuterPillar
+    3300018: OuterPillarSimple
+    3300020: Platforms
+    3300022: PlatformsSimple
+    4300000: Plane
+    4300002: Mball.009
+    4300004: Mball.002
+    4300006: Cube
+    4300008: Floor
+    4300010: InnerPillar
+    4300012: OuterPillar
+    4300014: Platforms
+    4300016: FloorSimple
+    4300018: OuterPillarSimple
+    4300020: InnerPillarSimple
+    4300022: PlatformsSimple
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

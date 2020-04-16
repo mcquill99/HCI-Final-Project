@@ -1,0 +1,216 @@
+fileFormatVersion: 2
+guid: da67fe68621d3f942a7a5efe1e90a84a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Collision_Floor
+    100002: Collision_InnerPillar
+    100004: Collision_OuterPillar
+    100006: Collision_Platforms
+    100008: Collision_RampDivider
+    100010: Collision_Ramps
+    100012: Collision_RampWalls
+    100014: Collision_Roof
+    100016: Collision_RoofRoof
+    100018: Collision_UpperBarriers
+    100020: Collision_UpperFloor
+    100022: Collision_UpperWalls
+    100024: Empty
+    100026: Floor
+    100028: InnerPillar
+    100030: OuterPillar
+    100032: Platforms
+    100034: RampDivider
+    100036: Ramps
+    100038: RampWalls
+    100040: Roof
+    100042: RoofRoof
+    100044: //RootNode
+    100046: UpperBarriers
+    100048: UpperFloor
+    100050: UpperWalls
+    400000: Collision_Floor
+    400002: Collision_InnerPillar
+    400004: Collision_OuterPillar
+    400006: Collision_Platforms
+    400008: Collision_RampDivider
+    400010: Collision_Ramps
+    400012: Collision_RampWalls
+    400014: Collision_Roof
+    400016: Collision_RoofRoof
+    400018: Collision_UpperBarriers
+    400020: Collision_UpperFloor
+    400022: Collision_UpperWalls
+    400024: Empty
+    400026: Floor
+    400028: InnerPillar
+    400030: OuterPillar
+    400032: Platforms
+    400034: RampDivider
+    400036: Ramps
+    400038: RampWalls
+    400040: Roof
+    400042: RoofRoof
+    400044: //RootNode
+    400046: UpperBarriers
+    400048: UpperFloor
+    400050: UpperWalls
+    2100000: No Name
+    2300000: Collision_Floor
+    2300002: Collision_InnerPillar
+    2300004: Collision_OuterPillar
+    2300006: Collision_Platforms
+    2300008: Collision_RampDivider
+    2300010: Collision_Ramps
+    2300012: Collision_RampWalls
+    2300014: Collision_Roof
+    2300016: Collision_RoofRoof
+    2300018: Collision_UpperBarriers
+    2300020: Collision_UpperFloor
+    2300022: Collision_UpperWalls
+    2300024: Floor
+    2300026: InnerPillar
+    2300028: OuterPillar
+    2300030: Platforms
+    2300032: RampDivider
+    2300034: Ramps
+    2300036: RampWalls
+    2300038: Roof
+    2300040: RoofRoof
+    2300042: UpperBarriers
+    2300044: UpperFloor
+    2300046: UpperWalls
+    3300000: Collision_Floor
+    3300002: Collision_InnerPillar
+    3300004: Collision_OuterPillar
+    3300006: Collision_Platforms
+    3300008: Collision_RampDivider
+    3300010: Collision_Ramps
+    3300012: Collision_RampWalls
+    3300014: Collision_Roof
+    3300016: Collision_RoofRoof
+    3300018: Collision_UpperBarriers
+    3300020: Collision_UpperFloor
+    3300022: Collision_UpperWalls
+    3300024: Floor
+    3300026: InnerPillar
+    3300028: OuterPillar
+    3300030: Platforms
+    3300032: RampDivider
+    3300034: Ramps
+    3300036: RampWalls
+    3300038: Roof
+    3300040: RoofRoof
+    3300042: UpperBarriers
+    3300044: UpperFloor
+    3300046: UpperWalls
+    4300000: Floor
+    4300002: InnerPillar
+    4300004: OuterPillar
+    4300006: Collision_Platforms
+    4300008: Collision_Floor
+    4300010: Collision_OuterPillar
+    4300012: Collision_InnerPillar
+    4300014: Platforms
+    4300016: Ramps
+    4300018: UpperFloor
+    4300020: UpperBarriers
+    4300022: RampWalls
+    4300024: RampDivider
+    4300026: UpperWalls
+    4300028: Roof
+    4300030: RoofRoof
+    4300032: Collision_RampDivider
+    4300034: Collision_Ramps
+    4300036: Collision_RampWalls
+    4300038: Collision_Roof
+    4300040: Collision_RoofRoof
+    4300042: Collision_UpperBarriers
+    4300044: Collision_UpperFloor
+    4300046: Collision_UpperWalls
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
