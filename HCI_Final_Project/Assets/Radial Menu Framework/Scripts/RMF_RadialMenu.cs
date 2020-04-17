@@ -180,6 +180,7 @@ public class RMF_RadialMenu : MonoBehaviour {
 
     }
 
+    //Used to call the click event on highlighted radial menu segment
     public void submitCurrentButton() {
         ExecuteEvents.Execute(elements[index].button.gameObject, pointer, ExecuteEvents.submitHandler);
     }
