@@ -992,8 +992,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160e52748577c2d48bee17b8295b54fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowDownTimeSpeed: 0.05
-  timeSpeedChangeDuration: 0.1
+  radialMenu: {fileID: 1427889188}
+  blurVolume: {fileID: 2065492941}
+  cameraController: {fileID: 1336311909}
+  radialMenuController: {fileID: 1438087424}
+  weaponsHolder: {fileID: 916228431}
+  slowDownTimeScale: 0.05
+  timeScaleChangeDuration: 1
   slowDownCurve:
     serializedVersion: 2
     m_Curve:
@@ -1009,8 +1014,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -1018,11 +1023,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  radialMenu: {fileID: 1427889188}
-  blurVolume: {fileID: 2065492941}
-  cameraController: {fileID: 1336311909}
-  radialMenuController: {fileID: 1438087424}
-  weaponsHolder: {fileID: 916228431}
 --- !u!1 &161371399
 GameObject:
   m_ObjectHideFlags: 0
@@ -3682,6 +3682,7 @@ MonoBehaviour:
   weaponVisual: {fileID: 1485838054}
   unequipedPoint: {fileID: 118107296}
   equipedPoint: {fileID: 1349514283}
+  equipAnimDuration: 0.5
   equipAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -3706,7 +3707,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  equipAnimDuration: 0.5
   onFireStartEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3731,7 +3731,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &392031657
 MonoBehaviour:
@@ -3769,12 +3769,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392031656}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 781181757}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &423715598
 GameObject:
@@ -7998,6 +7998,7 @@ MonoBehaviour:
   weaponVisual: {fileID: 1958240080}
   unequipedPoint: {fileID: 1094417176}
   equipedPoint: {fileID: 1392874565}
+  equipAnimDuration: 0.5
   equipAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -8022,7 +8023,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  equipAnimDuration: 0.5
   onFireStartEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -8367,6 +8367,40 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &781181756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 781181757}
+  m_Layer: 0
+  m_Name: NAVMESH_GROUP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &781181757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781181756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1060584988}
+  - {fileID: 1611018002}
+  - {fileID: 392031658}
+  - {fileID: 1283679446}
+  m_Father: {fileID: 1860567006}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &791275247
 GameObject:
   m_ObjectHideFlags: 0
@@ -25091,7 +25125,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1060584987
 MonoBehaviour:
@@ -25129,12 +25163,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060584986}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 781181757}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1075919240
 GameObject:
@@ -25396,6 +25430,7 @@ MonoBehaviour:
   weaponVisual: {fileID: 2121905224}
   unequipedPoint: {fileID: 597607624}
   equipedPoint: {fileID: 791275248}
+  equipAnimDuration: 0.5
   equipAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -25420,7 +25455,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  equipAnimDuration: 0.5
   onFireStartEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -26010,7 +26044,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1283679445
 MonoBehaviour:
@@ -26048,12 +26082,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283679444}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 781181757}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1309069309
 GameObject:
@@ -39126,7 +39160,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1611018001
 MonoBehaviour:
@@ -39164,12 +39198,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611018000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 781181757}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1628663519
 GameObject:
@@ -41911,6 +41945,7 @@ Transform:
   - {fileID: 1511062115}
   - {fileID: 1132237009}
   - {fileID: 1669752541}
+  - {fileID: 781181757}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43992,6 +44027,7 @@ MonoBehaviour:
   weaponVisual: {fileID: 944602238}
   unequipedPoint: {fileID: 1441941171}
   equipedPoint: {fileID: 2010442040}
+  equipAnimDuration: 0.5
   equipAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -44016,7 +44052,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  equipAnimDuration: 0.5
   onFireStartEvent:
     m_PersistentCalls:
       m_Calls: []
