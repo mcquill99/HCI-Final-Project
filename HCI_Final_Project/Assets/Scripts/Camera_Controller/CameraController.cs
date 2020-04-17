@@ -16,6 +16,7 @@ namespace VHS
 
             #region Settings
                 [Space]
+                [BoxGroup("Settings")] public bool lockLook = false;
                 [BoxGroup("Settings")] public Vector2 sensitivity;
                 [BoxGroup("Settings")] public Vector2 smoothAmount;
                 [BoxGroup("Settings")] [MinMaxSlider(-90f,90f)] public Vector2 lookAngleMinMax;
@@ -48,7 +49,9 @@ namespace VHS
 
             void LateUpdate()
             {
-                CalculateRotation();
+                if(!lockLook) {
+                    CalculateRotation();
+                }
                 SmoothRotation();
                 ApplyRotation();
                 HandleZoom();
