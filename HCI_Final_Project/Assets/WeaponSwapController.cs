@@ -15,10 +15,23 @@ public class WeaponSwapController : MonoBehaviour
     public VHS.CameraController cameraController;
     public RMF_RadialMenu radialMenuController;
 
+    private int currentWeaponIndex = 0;
+    private const int totalNumWeapons = 4;
+
+    public Transform weaponsHolder;
+    private List<Transform> weapons;
+
     void Start()
     {
         keyChangeTimestamp = -100f;
         radialMenu.SetActive(false);
+        weapons = new List<Transform>();
+        foreach(Transform t in weaponsHolder) {
+            weapons.Add(t);
+        }
+
+        chooseWeapon(0);
+
     }
 
     void Update()
@@ -28,6 +41,13 @@ public class WeaponSwapController : MonoBehaviour
         } else if(Input.GetKeyUp(KeyCode.Q)) {
             radialMenuController.submitCurrentButton();
             disableWeaponMenu();
+        }
+
+        if(Input.mouseScrollDelta.y != 0) {
+            int choice = currentWeaponIndex + Mathf.Clamp(Mathf.CeilToInt(Input.mouseScrollDelta.y), -1, 1);
+            choice = choice % totalNumWeapons;
+            choice = choice < 0 ? choice + totalNumWeapons : choice;
+            chooseWeapon(choice);
         }
 
         float progress = Mathf.Clamp(Time.time - keyChangeTimestamp, 0, timeSpeedChangeDuration) / timeSpeedChangeDuration;
@@ -61,5 +81,11 @@ public class WeaponSwapController : MonoBehaviour
     public void chooseWeapon(int weaponNum) {
         disableWeaponMenu();
         print("CHOSE WEAPON : " + weaponNum);
+        if(weaponNum != currentWeaponIndex) {
+            currentWeaponIndex = weaponNum;
+            for(int i = 0; i < weapons.Count; i++) {
+                weapons[i].gameObject.SetActive(i==currentWeaponIndex);
+            }
+        }
     }
 }
