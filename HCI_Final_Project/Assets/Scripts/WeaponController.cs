@@ -8,6 +8,7 @@ public class WeaponController : MonoBehaviour
 {
     [BoxGroup("References")] public GameObject weaponVisual;
     [BoxGroup("References")] public Transform unequipedPoint;
+    [BoxGroup("References")] public VHS.FirstPersonController firstPersonController;
     [BoxGroup("References")] public Transform equipedPoint;
 
     [Space]
@@ -20,7 +21,10 @@ public class WeaponController : MonoBehaviour
     [BoxGroup("Events")] public UnityEvent onFireStartEvent;   //Called once when fire key is pressed down
     [BoxGroup("Events")] public UnityEvent onFireStayEvent;    //Called continuously while fire key is pressed down
     [BoxGroup("Events")] public UnityEvent onFireStopEvent;    //Called once when fire key is released
-    
+    public VoidEvent onFireStartDelegate;
+    public VoidEvent onFireStayDelegate;
+    public VoidEvent onFireStopDelegate;    
+
     [Space]
 
     [BoxGroup("DEBUG")][ShowNonSerializedField] private bool isEquiped; //whether or not the weapon can fire
@@ -78,15 +82,28 @@ public class WeaponController : MonoBehaviour
     //Called once when fire key is pressed down
     void onFireStart() {
         onFireStartEvent.Invoke();
+        if(onFireStartDelegate != null) {
+            onFireStartDelegate();
+        }
     }
 
     //Called continuously while fire key is pressed down
     void onFireStay() {
         onFireStayEvent.Invoke();
+        if(onFireStayDelegate != null) {
+            onFireStayDelegate();
+        }
     }
 
     //Called once when fire key is released
     void onFireStop() {
         onFireStopEvent.Invoke();
+        if(onFireStopDelegate != null) {
+            onFireStopDelegate();
+        }
+    }
+
+    public bool getIsEquiped() {
+        return isEquiped;
     }
 }

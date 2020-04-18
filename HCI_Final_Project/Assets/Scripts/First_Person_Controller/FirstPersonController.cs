@@ -761,6 +761,10 @@ namespace VHS
                     //print(transform.eulerAngles);
 
                 }
+
+                public Vector3 getVelocity() {
+                    return m_characterController.velocity;
+                }
             #endregion
         #endregion
     }
