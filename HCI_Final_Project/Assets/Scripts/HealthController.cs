@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public delegate void VoidEvent();
-public delegate void SingleEvent(float val);
-[System.Serializable]
-public class SingleUnityEvent : UnityEvent<float>{};
-
 public class HealthController : HealthControllerReferencer
 {
     public float maxHealth;
