@@ -6,13 +6,13 @@ using NaughtyAttributes;
 
 public class SpawnerController : MonoBehaviour
 {
-    public GameObject creatureToSpawn;
-    public bool activeOnStart;
-    public int numToSpawn;
-    public float betweenSpawnDuration;
+    [BoxGroup("Settings")]public GameObject creatureToSpawn;
+    [BoxGroup("Settings")]public bool activeOnStart;
+    [BoxGroup("Settings")]public int numToSpawn;
+    [BoxGroup("Settings")]public float betweenSpawnDuration;
 
-    public HealthControllerEvent onSpawnCreatureEvent;
-    public HealthControllerDelegate onSpawnCreatureDelegate;
+    [BoxGroup("Events")]public HealthControllerEvent onSpawnCreatureEvent;
+    [BoxGroup("Events")]public HealthControllerDelegate onSpawnCreatureDelegate;
 
     private bool isActive;
     private int numSpawned;

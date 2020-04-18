@@ -685,12 +685,10 @@ namespace VHS
                 }
                 void HandleJump()
                 {
-                    //TODO: Fix this
                     if(movementInputData.JumpClicked) {
                         m_hasJumpedCooldown = Time.time + 0.1f;
                     }
                     if(movementInputData.JumpClicked && movementInputData.IsCrouching) {
-                        print("A");
                         InvokeCrouchRoutine(true);
                         movementInputData.IsSliding = false;
                         m_cameraController.isLockedCamera = false;

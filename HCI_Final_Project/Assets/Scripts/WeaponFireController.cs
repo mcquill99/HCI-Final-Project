@@ -10,6 +10,8 @@ public class WeaponFireController : MonoBehaviour
 {
     
     [BoxGroup("References")] public GameObject muzzle;
+    [BoxGroup("References")] public bool useCamera;
+    [BoxGroup("References")][HideIf("useCamera")] public Transform aimingTransform;
     [BoxGroup("References")] public WeaponController weaponController;
     [Space]
     [BoxGroup("Settings")] public float damage;
@@ -48,6 +50,10 @@ public class WeaponFireController : MonoBehaviour
     }
 
     public void Start() {
+        if(aimingTransform == null && useCamera) {
+            aimingTransform = Camera.main.transform;
+        }
+
         if(weaponController == null) {
             weaponController = GetComponent<WeaponController>();
         }
@@ -123,18 +129,18 @@ public class WeaponFireController : MonoBehaviour
 
     public void shootHitscan() {
         RaycastHit hit;
-        //TODO: Make this not forced to use the camera
-        Transform cam = Camera.main.transform;
-        int layerMask = 1 | 1 << 9 | 1 << 13;
+        int layerMask = 1 | 1 << 9 | 1 << 13 | 1 << 10;
         float distanceFromCenter = Random.Range(0, inaccuracy);
-        float radians = accuracyConeNum / numConeSegments * 2f * Mathf.PI;
+        float radians = (accuracyConeNum * 1.0f) / numConeSegments * 2f * Mathf.PI;
         Vector2 accuracyOffset = new Vector2(distanceFromCenter * Mathf.Cos(radians), distanceFromCenter * Mathf.Sin(radians));
-        Vector3 trajectory = cam.forward + cam.rotation * accuracyOffset;
+        Vector3 adjustedOffset = aimingTransform.rotation * accuracyOffset;
+        Debug.DrawLine(aimingTransform.forward, aimingTransform.forward + adjustedOffset, Color.magenta);
+        Vector3 trajectory = aimingTransform.forward + adjustedOffset;
 
         accuracyConeNum = (accuracyConeNum + 1) % numConeSegments;
 
-        if(Physics.Raycast(cam.position, trajectory, out hit, 100000f, layerMask)) {
-            Debug.DrawLine(cam.position, hit.point, Color.yellow);
+        if(Physics.Raycast(aimingTransform.position, trajectory, out hit, 100000f, layerMask)) {
+            Debug.DrawLine(aimingTransform.position, hit.point, Color.yellow);
 
             HealthControllerReferencer r = hit.collider.GetComponent<HealthControllerReferencer>();
             if(r != null) {
@@ -148,13 +154,12 @@ public class WeaponFireController : MonoBehaviour
 
     public void shootProjectile() {
         RaycastHit hit;
-        Transform cam = Camera.main.transform;
         int layerMask = 1 | 1 << 9 | 1 << 13;
         Quaternion projectileRotation;
-        if(Physics.Raycast(cam.position, cam.forward, out hit, 100000f, layerMask)) {
+        if(Physics.Raycast(aimingTransform.position, aimingTransform.forward, out hit, 100000f, layerMask)) {
             projectileRotation = Quaternion.LookRotation(hit.point - muzzle.transform.position, Vector3.up);
         } else {
-            projectileRotation = Quaternion.LookRotation(cam.forward * 100000f - muzzle.transform.position, Vector3.up);
+            projectileRotation = Quaternion.LookRotation(aimingTransform.forward * 100000f - muzzle.transform.position, Vector3.up);
         }
         ProjectileController projectileController = ((GameObject)Instantiate(projectilePrefab, muzzle.transform.position, projectileRotation)).GetComponent<ProjectileController>();
         projectileController.InitializeProjectile(damage, weaponController.firstPersonController.getVelocity());

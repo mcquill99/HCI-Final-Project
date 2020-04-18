@@ -6,12 +6,12 @@ using NaughtyAttributes;
 
 public class NumCreaturesDeadEvent : MonoBehaviour
 {
-    [ReorderableList]public List<SpawnerController> spawners;
+    [BoxGroup("Settings")][ReorderableList]public List<SpawnerController> spawners;
 
-    public int requiredAmountDead;
-    public bool singleExecution = true;
-    public UnityEvent onNumCreaturesDeadEvent;
-    public VoidDelegate onNumCreaturesDeadDelegate;
+    [BoxGroup("Settings")]public int requiredAmountDead;
+    [BoxGroup("Settings")]public bool singleExecution = true;
+    [BoxGroup("Events")]public UnityEvent onNumCreaturesDeadEvent;
+    [BoxGroup("Events")]public VoidDelegate onNumCreaturesDeadDelegate;
     
     private int numCreaturesDead = 0;
     private bool hasExecuted = false;

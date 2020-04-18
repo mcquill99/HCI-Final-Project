@@ -6,7 +6,7 @@ using NaughtyAttributes;
 public class HealthController : HealthControllerReferencer
 {
     public float maxHealth;
-    [ShowNonSerializedField]private float currentHealth;
+    [ReadOnly]public float currentHealth;
 
     public UnityEvent onDeathEvent;
     public VoidDelegate onDeathDelegate;

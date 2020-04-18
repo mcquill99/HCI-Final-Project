@@ -18,10 +18,10 @@ public class LeverController : MonoBehaviour
     [BoxGroup("Events")] public UnityEvent onLeverOffEvent;
     [BoxGroup("Events")] public VoidDelegate onLeverOffDelegate;
 
+    [BoxGroup("DEBUG")][ReadOnly]public bool isOn = false;
+    [BoxGroup("DEBUG")][ReadOnly]public bool isAnimating;
     private Interactable interactable;
     private bool isGoalOn = false;
-    [ShowNonSerializedField]private bool isOn = false;
-    private bool isAnimating;
     private float flipTimestamp;
     private Quaternion onRotation;
     private Quaternion offRotation;
