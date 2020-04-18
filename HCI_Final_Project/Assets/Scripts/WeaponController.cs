@@ -21,9 +21,9 @@ public class WeaponController : MonoBehaviour
     [BoxGroup("Events")] public UnityEvent onFireStartEvent;   //Called once when fire key is pressed down
     [BoxGroup("Events")] public UnityEvent onFireStayEvent;    //Called continuously while fire key is pressed down
     [BoxGroup("Events")] public UnityEvent onFireStopEvent;    //Called once when fire key is released
-    public VoidEvent onFireStartDelegate;
-    public VoidEvent onFireStayDelegate;
-    public VoidEvent onFireStopDelegate;    
+    public VoidDelegate onFireStartDelegate;
+    public VoidDelegate onFireStayDelegate;
+    public VoidDelegate onFireStopDelegate;    
 
     [Space]
 

@@ -9,7 +9,7 @@ public class InteractionController : MonoBehaviour
     public float interactionDistance;
 
     public UnityEvent onInteractEvent;
-    public VoidEvent onInteractDelegate;
+    public VoidDelegate onInteractDelegate;
 
 
     void Update()

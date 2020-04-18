@@ -1,0 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using NaughtyAttributes;
+public class CreatureDeathEvent : CreatureEvent
+{
+    public UnityEvent creatureDeathEvent;
+    public VoidDelegate creatureDeathDelegate;
+
+    public override void initEvent(HealthController hcr) {
+        hcr.onDeathDelegate += onCreatureDeathEvent;
+    }
+
+    public void onCreatureDeathEvent() {
+        creatureDeathEvent.Invoke();
+        if(creatureDeathDelegate != null) {
+            creatureDeathDelegate();
+        }
+    }
+}

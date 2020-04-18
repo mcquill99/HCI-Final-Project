@@ -12,11 +12,11 @@ public class LeverController : MonoBehaviour
     [BoxGroup("Settings")] public AnimationCurve leverEasingCurve;
     [Space]
     [BoxGroup("Events")] public BoolUnityEvent onLeverChangedEvent;
-    [BoxGroup("Events")] public BoolEvent onLeverChangedDelegate;
+    [BoxGroup("Events")] public BoolDelegate onLeverChangedDelegate;
     [BoxGroup("Events")] public UnityEvent onLeverOnEvent;
-    [BoxGroup("Events")] public VoidEvent onLeverOnDelegate;
+    [BoxGroup("Events")] public VoidDelegate onLeverOnDelegate;
     [BoxGroup("Events")] public UnityEvent onLeverOffEvent;
-    [BoxGroup("Events")] public VoidEvent onLeverOffDelegate;
+    [BoxGroup("Events")] public VoidDelegate onLeverOffDelegate;
 
     private Interactable interactable;
     private bool isGoalOn = false;

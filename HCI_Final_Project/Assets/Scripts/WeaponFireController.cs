@@ -123,6 +123,7 @@ public class WeaponFireController : MonoBehaviour
 
     public void shootHitscan() {
         RaycastHit hit;
+        //TODO: Make this not forced to use the camera
         Transform cam = Camera.main.transform;
         int layerMask = 1 | 1 << 9 | 1 << 13;
         float distanceFromCenter = Random.Range(0, inaccuracy);

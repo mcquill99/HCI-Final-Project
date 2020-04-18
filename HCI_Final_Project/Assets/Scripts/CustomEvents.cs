@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public delegate void VoidEvent();
-public delegate void SingleEvent(float val);
-public delegate void BoolEvent(bool val);
+public delegate void VoidDelegate();
+public delegate void SingleDelegate(float val);
+public delegate void BoolDelegate(bool val);
+public delegate void HealthControllerDelegate(HealthController val);
 
 
 [System.Serializable]
 public class SingleUnityEvent : UnityEvent<float>{};
 [System.Serializable]
 public class BoolUnityEvent : UnityEvent<bool>{};
+[System.Serializable]
+public class HealthControllerEvent : UnityEvent<HealthController>{};

@@ -10,46 +10,40 @@ namespace NaughtyAttributes.Editor
     {
         private Dictionary<string, ReorderableList> reorderableListsByPropertyName = new Dictionary<string, ReorderableList>();
 
-        string GetPropertyKeyName(SerializedProperty property)
-        {
-            return property.serializedObject.targetObject.GetInstanceID() + "/" + property.name;
-        }
-
         public override void DrawProperty(SerializedProperty property)
         {
             EditorDrawUtility.DrawHeader(property);
 
             if (property.isArray)
             {
-                var key = GetPropertyKeyName(property);
-
-                if (!this.reorderableListsByPropertyName.ContainsKey(key))
+                if (!this.reorderableListsByPropertyName.ContainsKey(property.name))
                 {
                     ReorderableList reorderableList = new ReorderableList(property.serializedObject, property, true, true, true, true)
                     {
-                        drawHeaderCallback = (Rect rect) =>
-                        {
-                            EditorGUI.LabelField(rect, string.Format("{0}: {1}", property.displayName, property.arraySize), EditorStyles.label);
-                        },
+                        drawHeaderCallback = (Rect rect) => { EditorGUI.LabelField(rect, string.Format("{0}: {1}", property.displayName, property.arraySize), EditorStyles.label); },
 
                         drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
                         {
                             var element = property.GetArrayElementAtIndex(index);
                             rect.y += 2f;
+                            rect.x += 10f;
+                            rect.width -= 10f;
 
-                            EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight), element);
-                        }
+                            EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, 0), element, true);
+                        },
+                        elementHeightCallback = index => EditorGUI.GetPropertyHeight(property.GetArrayElementAtIndex(index))
                     };
 
-                    this.reorderableListsByPropertyName[key] = reorderableList;
+                    this.reorderableListsByPropertyName[property.name] = reorderableList;
                 }
 
-                this.reorderableListsByPropertyName[key].DoLayoutList();
+                this.reorderableListsByPropertyName[property.name].DoLayoutList();
             }
             else
             {
                 string warning = typeof(ReorderableListAttribute).Name + " can be used only on arrays or lists";
-                EditorDrawUtility.DrawHelpBox(warning, MessageType.Warning, context: PropertyUtility.GetTargetObject(property));
+                EditorGUILayout.HelpBox(warning, MessageType.Warning);
+                Debug.LogWarning(warning, PropertyUtility.GetTargetObject(property));
 
                 EditorDrawUtility.DrawPropertyField(property);
             }

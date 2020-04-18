@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using NaughtyAttributes;
 public class HealthController : HealthControllerReferencer
 {
     public float maxHealth;
-    private float currentHealth;
+    [ShowNonSerializedField]private float currentHealth;
 
     public UnityEvent onDeathEvent;
-    public VoidEvent onDeathDelegate;
+    public VoidDelegate onDeathDelegate;
 
     public SingleUnityEvent onRecieveDamageEvent;
-    public SingleEvent onRecieveDamageDelegate;
+    public SingleDelegate onRecieveDamageDelegate;
 
-    void Start()
+
+    public SingleUnityEvent onHealthChangedEvent;
+    public SingleDelegate onHealthChangedDelegate;
+
+    void Awake()
     {
         healthController = this;
         initializeHealth();
@@ -30,6 +34,11 @@ public class HealthController : HealthControllerReferencer
         onRecieveDamageEvent.Invoke(amount);
         if(onRecieveDamageDelegate != null) {
             onRecieveDamageDelegate(amount);
+        }
+
+        onHealthChangedEvent.Invoke(currentHealth);
+        if(onHealthChangedDelegate != null) {
+            onHealthChangedDelegate(currentHealth);
         }
         
         if(currentHealth <= 0) {

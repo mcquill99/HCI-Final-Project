@@ -1,0 +1,66 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using NaughtyAttributes;
+
+public class SpawnerController : MonoBehaviour
+{
+    public GameObject creatureToSpawn;
+    public bool activeOnStart;
+    public int numToSpawn;
+    public float betweenSpawnDuration;
+
+    public HealthControllerEvent onSpawnCreatureEvent;
+    public HealthControllerDelegate onSpawnCreatureDelegate;
+
+    private bool isActive;
+    private int numSpawned;
+    private float betweenSpawnTimestamp;
+    private CreatureEvent[] events;
+
+    void Start()
+    {
+        events = gameObject.GetComponents<CreatureEvent>();
+
+        if(activeOnStart) {
+            activateSpawner();
+        }
+    }
+
+    void Update()
+    {
+        if(isActive && betweenSpawnTimestamp < Time.time) {
+            if(numSpawned >= numToSpawn) {
+                deactivateSpawner();
+                return;
+            }
+            spawnCreature();
+        }
+    }
+
+    public void activateSpawner() {
+        isActive = true;
+        numSpawned = 0;
+    }
+
+    public void deactivateSpawner() {
+        isActive = false;
+    }
+
+    private void spawnCreature() {
+        betweenSpawnTimestamp = Time.time + betweenSpawnDuration;
+
+        HealthControllerReferencer healthControllerReferencer = ((GameObject)Instantiate(creatureToSpawn, transform.position, transform.rotation)).GetComponentInChildren<HealthControllerReferencer>();
+        foreach(CreatureEvent e in events) {
+            e.initEvent(healthControllerReferencer.healthController);
+        }
+
+        onSpawnCreatureEvent.Invoke(healthControllerReferencer.healthController);
+        if(onSpawnCreatureDelegate != null) {
+            onSpawnCreatureDelegate(healthControllerReferencer.healthController);
+        }
+
+        numSpawned++;
+    }
+}

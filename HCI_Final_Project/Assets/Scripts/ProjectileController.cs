@@ -9,7 +9,7 @@ public class ProjectileController : MonoBehaviour
     [BoxGroup("Settings")] public float accelerationAmount;
     [BoxGroup("Settings")] public bool destroyOnImpact = false;
     [BoxGroup("Events")] public UnityEvent onImpactEvent;
-    public VoidEvent onImpactDelegate;
+    public VoidDelegate onImpactDelegate;
     private Rigidbody rigidbody;
     private float damage;
     
