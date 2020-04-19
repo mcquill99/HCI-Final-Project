@@ -6,12 +6,23 @@ using NaughtyAttributes;
 
 public class SpawnerController : MonoBehaviour
 {
+    [Tooltip("Prefab to instantiate when spawner spawns")]
     [BoxGroup("Settings")]public GameObject creatureToSpawn;
+
+    [Tooltip("Is spawner active on instantiation")]
     [BoxGroup("Settings")]public bool activeOnStart;
+
+    [Tooltip("Number of creatures to spawn before deactivation")]
     [BoxGroup("Settings")]public int numToSpawn;
+
+    [Tooltip("Time in seconds to wait before spawning first creature")]
     [BoxGroup("Settings")]public float timeBeforeFirstSpawn = 0f;
+
+    [Tooltip("Time in seconds to wait between creature spawns")]
     [BoxGroup("Settings")]public float betweenSpawnDuration;
 
+
+    [Tooltip("UnityEvent called when creature spawns. Passes HealthController as parameter. Delegate onSpawnCreatureDelegate also executed")]
     [BoxGroup("Events")]public HealthControllerEvent onSpawnCreatureEvent;
     [BoxGroup("Events")]public HealthControllerDelegate onSpawnCreatureDelegate;
 

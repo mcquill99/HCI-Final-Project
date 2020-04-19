@@ -5,16 +5,22 @@ using UnityEngine.Events;
 using NaughtyAttributes;
 public class HealthController : HealthControllerReferencer
 {
+    [Tooltip("Maximum health")]
     [BoxGroup("Settings")]public float maxHealth;
+    
+    [Tooltip("Current health")]
     [ReadOnly]public float currentHealth;
 
+
+    [Tooltip("UnityEvent called when health <= 0. Delegate onDeathDelegate also executed")]
     [BoxGroup("Events")]public UnityEvent onDeathEvent;
     [BoxGroup("Events")]public VoidDelegate onDeathDelegate;
 
+    [Tooltip("UnityEvent called when controller recieves damage. Amount of damage passed through as parameter. Delegate onRecieveDamageDelegate also executed")]
     [BoxGroup("Events")]public SingleUnityEvent onRecieveDamageEvent;
     [BoxGroup("Events")]public SingleDelegate onRecieveDamageDelegate;
 
-
+    [Tooltip("UnityEvent called when health is changed. Changed health value is passed through as parameter. Delegate onHealthChanged also executed")]
     [BoxGroup("Events")]public SingleUnityEvent onHealthChangedEvent;
     [BoxGroup("Events")]public SingleDelegate onHealthChangedDelegate;
 

@@ -6,8 +6,11 @@ using NaughtyAttributes;
 [System.Serializable]
 public class DamageOverTimeStatus : Status
 {
-    public float damagePerTick;
-    public float tickPerSecond;
+    [Tooltip("Amount of damage done per status tick")]
+    [BoxGroup("Settings")]public float damagePerTick;
+
+    [Tooltip("Amount of status ticks per second")]
+    [BoxGroup("Settings")]public float tickPerSecond;
     private float tickTimestamp;
 
 

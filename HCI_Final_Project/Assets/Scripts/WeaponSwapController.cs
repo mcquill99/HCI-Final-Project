@@ -5,16 +5,30 @@ using UnityEngine.Rendering.PostProcessing;
 using NaughtyAttributes;
 public class WeaponSwapController : MonoBehaviour
 {
-    [BoxGroup("References")] public GameObject radialMenu;
-    [BoxGroup("References")] public PostProcessVolume blurVolume; 
-    [BoxGroup("References")] public VHS.CameraController cameraController; 
+    [Tooltip("Reference to radial menu UI")]
+    [Required][BoxGroup("References")] public GameObject radialMenu;
+    
+    [Tooltip("Reference to post process volume with blur effect")]
+    [Required][BoxGroup("References")] public PostProcessVolume blurVolume; 
+    
+    [Tooltip("Reference to camera controller to lock look when swapping weapons")]
+    [Required][BoxGroup("References")] public VHS.CameraController cameraController; 
+    
+    [Tooltip("Reference to radial menu to choose option when menu closed")]
     [BoxGroup("References")] public RMF_RadialMenu radialMenuController;
-    [BoxGroup("References")] public Transform weaponsHolder;
+
+    [Tooltip("Reference to weapons holder to create list of weapons")]
+    [Required][BoxGroup("References")] public Transform weaponsHolder;
 
     [Space]
 
+    [Tooltip("Value to set timescale to when choosing weapon")]
     [BoxGroup("Settings")] public float slowDownTimeScale = 0.25f; //Value for timescale when choosing weapon
+
+    [Tooltip("Duration of time slowdown animation in seconds")]
     [BoxGroup("Settings")] public float timeScaleChangeDuration = 0.3f; //Duration of time it takes to animate
+
+    [Tooltip("Easing curve for slowdown animation")]
     [BoxGroup("Settings")] public AnimationCurve slowDownCurve; //Custom easing curve for animation
 
     [Space]

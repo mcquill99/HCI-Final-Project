@@ -6,13 +6,24 @@ using NaughtyAttributes;
 public enum HazardType {DoT, Speed}
 public class EnvironmentalHazard : MonoBehaviour
 {
+    [Tooltip("Type of status that hazard should apply")]
     [OnValueChanged("onHazardTypeChangedCallback")]
     [BoxGroup("Settings")]public HazardType type = HazardType.DoT;
+    
+    [Tooltip("Should hazard destroy itself after selfDestructTime seconds")]
     [BoxGroup("Settings")]public bool shouldSelfDestruct = false;
+    
+    [Tooltip("Amount of time in seconds after instantiation before hazard destroys itself")]
     [BoxGroup("Settings")][ShowIf("shouldSelfDestruct")]public float selfDestructTime;
-    [ShowIf("isDoTStatus")] [BoxGroup("Settings")]public DamageOverTimeStatus damageOverTimeStatus;
-    [ShowIf("isSpeedStatus")][BoxGroup("Settings")] public SpeedStatus speedStatus;
+
+    [Tooltip("Status to apply if Type equals DoT")]
+    [EnableIf("isDoTStatus")] [BoxGroup("Settings")]public DamageOverTimeStatus damageOverTimeStatus;
+    
+    [Tooltip("Status to apply if Type equals Speed")]
+    [EnableIf("isSpeedStatus")][BoxGroup("Settings")] public SpeedStatus speedStatus;
     private float tickTimestamp;
+
+    [Tooltip("List of creatures currently effected by hazard")]
     [BoxGroup("Debug")][ReadOnly]public List<StatusManager> effectedCreatures;
 
     private bool isDoTStatus;

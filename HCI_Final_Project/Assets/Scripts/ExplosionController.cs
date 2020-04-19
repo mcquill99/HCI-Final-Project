@@ -4,6 +4,7 @@ using UnityEngine;
 using NaughtyAttributes;
 public class ExplosionController : MonoBehaviour
 {
+    [Tooltip("Rate at which damage decreases based on distance from explosion center and explosion radius")]
     [BoxGroup("Settings")]public AnimationCurve damageFalloffCurve;
 
     private float radius;

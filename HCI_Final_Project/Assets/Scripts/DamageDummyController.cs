@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using NaughtyAttributes;
 
 public class DamageDummyController : MonoBehaviour
 {
-    public TextMeshProUGUI text;
+    [Tooltip("TMPro UGUI to print dps to")]
+    [Required][BoxGroup("References")]public TextMeshProUGUI text;
     private HealthController healthController;
-    private float dps;
+    private float currentDPS;
+    private float previousDPS;
     private float timestamp;
     public void onRecieveDamage(float val) {
-        dps += val;
+        currentDPS += val;
         healthController.currentHealth += val;
     }
 
     void Update() {
-        text.text = dps.ToString("F2");
+        text.text = previousDPS.ToString("F2");
         if(timestamp < Time.time) {
             timestamp = Time.time + 1f;
-            dps = 0;
+            previousDPS = currentDPS;
+            currentDPS = 0;
         }
     }
 

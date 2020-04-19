@@ -6,19 +6,36 @@ using NaughtyAttributes;
 
 public class LeverController : MonoBehaviour
 {
-    [BoxGroup("Settings")] public Transform pivot;
+    [Tooltip("Transform to animate rotation")]
+    [Required][BoxGroup("Settings")] public Transform pivot;
+
+    [Tooltip("Values to animate pivot local rotation between")]
     [BoxGroup("Settings")] [MinMaxSlider(-180, 180)]public Vector2 onOffAngleRange = new Vector2(-45, 45);
+    
+    [Tooltip("Time in seconds for animation")]
     [BoxGroup("Settings")] public float switchDuration = 0.5f;
+    
+    [Tooltip("Easing curve for animation of pivot")]
     [BoxGroup("Settings")] public AnimationCurve leverEasingCurve;
     [Space]
+
+    [Tooltip("UnityEvent called when lever is interacted with. Passes value of isOn as parameter. Delegate onLeverChangedDelegate also executed")]
     [BoxGroup("Events")] public BoolUnityEvent onLeverChangedEvent;
     [BoxGroup("Events")] public BoolDelegate onLeverChangedDelegate;
+
+    [Tooltip("UnityEvent called when lever is turned on. Delegate onLeverOnDelegate also executed")]
     [BoxGroup("Events")] public UnityEvent onLeverOnEvent;
     [BoxGroup("Events")] public VoidDelegate onLeverOnDelegate;
+
+    [Tooltip("UnityEvent called when lever is turned off. Delegate onLeverOffDelegate also executed")]
     [BoxGroup("Events")] public UnityEvent onLeverOffEvent;
     [BoxGroup("Events")] public VoidDelegate onLeverOffDelegate;
 
+
+    [Tooltip("Status of lever")]
     [BoxGroup("DEBUG")][ReadOnly]public bool isOn = false;
+    
+    [Tooltip("Is lever currently animating")]
     [BoxGroup("DEBUG")][ReadOnly]public bool isAnimating;
     private Interactable interactable;
     private bool isGoalOn = false;

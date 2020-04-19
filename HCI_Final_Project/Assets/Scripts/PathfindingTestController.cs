@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using NaughtyAttributes;
 
 public class PathfindingTestController : MonoBehaviour
 {
-    public GameObject target;
+    [Tooltip("Target to navigate towards")]
+    [BoxGroup("Settings")]public GameObject target;
     private NavMeshAgent agent;
     void Start()
     {

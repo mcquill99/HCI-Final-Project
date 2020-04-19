@@ -8,33 +8,66 @@ public enum DeliveryType {Hitscan, Projectile}
 
 public class WeaponFireController : MonoBehaviour
 {
-    
+    [Tooltip("Reference to muzzle of weapon. Used for instantiating projectiles")]
     [BoxGroup("References")] public GameObject muzzle;
+
+    [Tooltip("Automatically use camera transform. If false use aimingTransform")]
     [BoxGroup("References")] public bool useCamera;
+
+    [Tooltip("Reference to transform used for aiming")]
     [BoxGroup("References")][HideIf("useCamera")] public Transform aimingTransform;
+    
+    [Tooltip("Reference to weapon controller. Used to link delegates")]
     [BoxGroup("References")] public WeaponController weaponController;
     [Space]
+    
+    [Tooltip("Damage of weapon")]
     [BoxGroup("Settings")] public float damage;
+    
+    [Tooltip("Fire rate of weapon. Represented as shots per second")]
     [BoxGroup("Settings")] public float fireRate;
+
+    [Tooltip("Maximum ammo that can be stored")]
     [BoxGroup("Settings")] public int maxAmmo;
+    
+    [Tooltip("Amount of bullets to instantiate per shot")]
     [BoxGroup("Settings")] public int bulletsPerAmmo = 1;
+
+    [Tooltip("Weapon spread represened. Higher number is less accurate")]
     [BoxGroup("Settings")][Slider(0f, 1f)] public float inaccuracy;
+
+    [Tooltip("LayerMask to check for hit")]
     [BoxGroup("Settings")] public LayerMask layers;
 
+    [Tooltip("Weapon fire mode. Can be Single, Semi-Auto, or Full Auto")]
     [OnValueChanged("onFireModeChangedCallback")]
+    
     [BoxGroup("Settings")] public FireMode fireMode;
+    
+    [Tooltip("Weapon delivery type. Either Hitscan or Projectile")]
     [OnValueChanged("onDeliveryTypeChangedCallback")]
     [BoxGroup("Settings")] public DeliveryType deliveryType;
     [Space]
+
+    [Tooltip("If Semi-Auto, maximum amount of shots possible in a burst")]
     [BoxGroup("Additional Settings")][ShowIf("isSemiAuto")] public float shotsPerBurst;
-    [BoxGroup("Additional Settings")][ShowIf("isSemiAuto")]  private int numFiredInBurst;
+
+    [Tooltip("Time in seconds required after full burst is fired before weapon can fire again")]
     [BoxGroup("Additional Settings")][ShowIf("isSemiAuto")]  public float burstCooldown;
+
+    [Tooltip("Prefab to be instantiated when weapon fired and is using Projectile delivery type")]
     [BoxGroup("Additional Settings")][ShowIf("isProjectile")]  public GameObject projectilePrefab;
+
+    [Tooltip("Effective distance that hitscan weapon can do damage. Used to calculate damage falloff")]
     [BoxGroup("Additional Settings")][ShowIf("isHitscan")]  public float effectiveDistance;
+
+    [Tooltip("Curve for damage falloff. Used with effective distance to calculate damage")]
     [BoxGroup("Additional Settings")][ShowIf("isHitscan")]  public AnimationCurve damageFalloff;
+
+    [Tooltip("Reference to particle system for bullet hit effects")]
     [BoxGroup("Additional Settings")][ShowIf("isHitscan")]  public ParticleSystem bulletHitEffect;
 
-
+    private int numFiredInBurst;
     private float burstTimestamp;
     private float shotTimestamp;
     private int currentAmmo;
@@ -146,10 +179,12 @@ public class WeaponFireController : MonoBehaviour
         if(Physics.Raycast(aimingTransform.position, trajectory, out hit, 100000f, layerMask)) {
             Debug.DrawLine(aimingTransform.position, hit.point, Color.yellow);
 
-            bulletHitEffect.transform.position = hit.point;
-            bulletHitEffect.transform.LookAt(hit.point + hit.normal);
-            bulletHitEffect.Emit(1);
-
+            if(bulletHitEffect) {
+                bulletHitEffect.transform.position = hit.point;
+                bulletHitEffect.transform.LookAt(hit.point + hit.normal);
+                bulletHitEffect.Emit(1);
+            }
+            
             HealthControllerReferencer r = hit.collider.GetComponent<HealthControllerReferencer>();
             if(r != null) {
                 HealthController healthController = r.healthController;
@@ -171,7 +206,7 @@ public class WeaponFireController : MonoBehaviour
             projectileRotation = Quaternion.LookRotation(aimingTransform.forward * 100000f - muzzle.transform.position, Vector3.up);
         }
         ProjectileController projectileController = ((GameObject)Instantiate(projectilePrefab, muzzle.transform.position, projectileRotation)).GetComponent<ProjectileController>();
-        projectileController.InitializeProjectile(damage, weaponController.firstPersonController.getVelocity(), layers);
+        projectileController.InitializeProjectile(damage, weaponController.movementController.getVelocity(), layers, weaponController.movementController.gameObject);
     }
 
 }

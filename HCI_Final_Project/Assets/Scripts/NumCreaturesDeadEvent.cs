@@ -6,10 +6,16 @@ using NaughtyAttributes;
 
 public class NumCreaturesDeadEvent : MonoBehaviour
 {
+    [Tooltip("List of spawners to listen to. Creatures spawned from these spawners are counted towards requiredAmountDead.")]
     [BoxGroup("Settings")][ReorderableList]public List<SpawnerController> spawners;
 
+    [Tooltip("Required number of creatures to die from spawners in order to invoke event")]
     [BoxGroup("Settings")]public int requiredAmountDead;
+
+    [Tooltip("Only invoke event once")]
     [BoxGroup("Settings")]public bool singleExecution = true;
+
+    [Tooltip("UnityEvent called when required number of deaths is reached. Delegate onNumCreaturesDeadDelegate also executed")]
     [BoxGroup("Events")]public UnityEvent onNumCreaturesDeadEvent;
     [BoxGroup("Events")]public VoidDelegate onNumCreaturesDeadDelegate;
     

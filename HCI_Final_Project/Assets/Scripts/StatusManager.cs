@@ -4,10 +4,14 @@ using UnityEngine;
 using NaughtyAttributes;
 public class StatusManager : MonoBehaviour
 {
-    [ReadOnly]public HealthController healthController;
-    [ReadOnly]public MovementController movementController;
+    [Tooltip("Reference to HealthController for health statuses")]
+    [BoxGroup("DEBUG")][ReadOnly]public HealthController healthController;
+
+    [Tooltip("Reference to movementController for speed statuses")]
+    [BoxGroup("DEBUG")][ReadOnly]public MovementController movementController;
     
-    [ReadOnly]public List<Status> statuses;
+    [Tooltip("List of current active statuses")]
+    [BoxGroup("DEBUG")][ReadOnly]public List<Status> statuses;
 
     void Start()
     {
@@ -40,6 +44,7 @@ public class StatusManager : MonoBehaviour
 
 [System.Serializable]
 public abstract class Status {
+    [Tooltip("Duration in seconds that the status lasts")]
     public float duration;
     private float timeRecieved;
     public void initStatus() {

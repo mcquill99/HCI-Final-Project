@@ -4,8 +4,13 @@ using UnityEngine;
 using NaughtyAttributes;
 public class ExplosiveBarrelController : MonoBehaviour
 {
-    [BoxGroup("Settings")]public GameObject explosionPrefab;
+    [Tooltip("Prefab of explosion to instantiate once barrel dies")]
+    [Required][BoxGroup("Settings")]public GameObject explosionPrefab;
+    
+    [Tooltip("Radius of explosion. Effects damage falloff")]
     [BoxGroup("Settings")]public float explosionRadius;
+
+    [Tooltip("Damage of explosion. Effected by radius and explosion damage falloff")]
     [BoxGroup("Settings")]public float explosionDamage;
 
     private HealthControllerReferencer healthControllerReferencer;
