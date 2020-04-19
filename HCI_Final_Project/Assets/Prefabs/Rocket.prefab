@@ -64,7 +64,11 @@ MonoBehaviour:
   initialSpeed: 10
   accelerationAmount: 12
   destroyOnImpact: 1
-  explosionRadius: 2
+  explosionRadius: 3
+  timeBeforeSelfDestruct: 4
+  layers:
+    serializedVersion: 2
+    m_Bits: 0
   explosionPrefab: {fileID: 2608306769859063509, guid: f3242db5f4a56ae4aac591797f5268fa,
     type: 3}
   onImpactEvent:

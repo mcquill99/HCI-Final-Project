@@ -30,6 +30,9 @@ public class WeaponFireController : MonoBehaviour
     [BoxGroup("Additional Settings")][ShowIf("isSemiAuto")]  private int numFiredInBurst;
     [BoxGroup("Additional Settings")][ShowIf("isSemiAuto")]  public float burstCooldown;
     [BoxGroup("Additional Settings")][ShowIf("isProjectile")]  public GameObject projectilePrefab;
+    [BoxGroup("Additional Settings")][ShowIf("isHitscan")]  public float effectiveDistance;
+    [BoxGroup("Additional Settings")][ShowIf("isHitscan")]  public AnimationCurve damageFalloff;
+    [BoxGroup("Additional Settings")][ShowIf("isHitscan")]  public ParticleSystem bulletHitEffect;
 
 
     private float burstTimestamp;
@@ -143,11 +146,16 @@ public class WeaponFireController : MonoBehaviour
         if(Physics.Raycast(aimingTransform.position, trajectory, out hit, 100000f, layerMask)) {
             Debug.DrawLine(aimingTransform.position, hit.point, Color.yellow);
 
+            bulletHitEffect.transform.position = hit.point;
+            bulletHitEffect.transform.LookAt(hit.point + hit.normal);
+            bulletHitEffect.Emit(1);
+
             HealthControllerReferencer r = hit.collider.GetComponent<HealthControllerReferencer>();
             if(r != null) {
                 HealthController healthController = r.healthController;
                 if(healthController) {
-                    healthController.recieveDamage(damage);
+                    float dist = Mathf.Clamp(Vector3.Distance(hit.collider.ClosestPoint(transform.position), transform.position) / effectiveDistance, 0, 1f);
+                    healthController.recieveDamage(damage / bulletsPerAmmo * damageFalloff.Evaluate(dist));
                 }
             }
         }

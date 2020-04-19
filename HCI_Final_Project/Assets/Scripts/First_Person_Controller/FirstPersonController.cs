@@ -25,6 +25,7 @@ namespace VHS
                     [BoxGroup("Locomotion Settings")] public float runSpeed = 3f;
                     [BoxGroup("Locomotion Settings")] public float jumpSpeed = 5f;
                     [BoxGroup("Locomotion Settings")] public int jumpAmount = 1;
+                    [BoxGroup("Locomotion Settings")] public float speedMultiplier = 1;
                     [BoxGroup("Locomotion Settings")][Slider(0f,1f)] public float moveBackwardsSpeedPercent = 0.5f;
                     [BoxGroup("Locomotion Settings")][Slider(0f,1f)]  public float moveSideSpeedPercent = 0.75f;
                 #endregion
@@ -380,7 +381,7 @@ namespace VHS
                     m_currentSpeed = movementInputData.InputVector.x != 0 && movementInputData.InputVector.y ==  0 ? m_currentSpeed * moveSideSpeedPercent :  m_currentSpeed;
                     m_currentSpeed = movementInputData.IsSliding ? slideSpeed * slideSpeedCurve.Evaluate(m_slideProgress) : m_currentSpeed;
                     m_currentSpeed = movementInputData.IsSliding && m_slopedSlideTimestamp > Time.time ? slopedSlideSpeed : m_currentSpeed;
-                
+                    m_currentSpeed *= speedMultiplier;
                 }
 
                 void CalculateFinalMovement()

@@ -9,6 +9,7 @@ public class ProjectileController : MonoBehaviour
     [BoxGroup("Settings")] public float accelerationAmount;
     [BoxGroup("Settings")] public bool destroyOnImpact = false;
     [BoxGroup("Settings")] public float explosionRadius = 2f;
+    [BoxGroup("Settings")] public float timeBeforeSelfDestruct = 8f;
     [BoxGroup("Settings")] public LayerMask layers;
 
     [BoxGroup("Settings")] public GameObject explosionPrefab;
@@ -16,6 +17,7 @@ public class ProjectileController : MonoBehaviour
     public VoidDelegate onImpactDelegate;
     private Rigidbody rigidbody;
     private float damage;
+    private float selfDestructTimeStamp;
     
     public void InitializeProjectile(float damage, Vector3 inheritVelocity, LayerMask layers) {
         this.damage = damage;
@@ -24,17 +26,27 @@ public class ProjectileController : MonoBehaviour
 
         rigidbody.velocity = Vector3.Project(inheritVelocity, transform.forward);
         rigidbody.velocity += transform.forward * initialSpeed;   
+
+        selfDestructTimeStamp = Time.time + timeBeforeSelfDestruct;
     }
     
     void Update() {
         rigidbody.AddForce(transform.forward * accelerationAmount);
+
+        if(selfDestructTimeStamp < Time.time) {
+            explode();
+        }
     }
 
     void OnCollisionEnter(Collision collision) {
         if((layers & (1 << collision.gameObject.layer)) == 0) {
             return;
+        } else {
+            explode();
         }
+    }
 
+    void explode() {
         onImpactEvent.Invoke();
         if(onImpactDelegate != null) {
             onImpactDelegate();
@@ -44,13 +56,6 @@ public class ProjectileController : MonoBehaviour
 
         controller.initExplosion(explosionRadius, damage);
 
-        // HealthControllerReferencer r = collision.gameObject.GetComponent<HealthControllerReferencer>();
-        // if(r != null) {
-        //     HealthController healthController = r.healthController;
-        //     healthController.recieveDamage(damage);
-        // }
-
-        
         if(destroyOnImpact) {
             Destroy(gameObject);
         }

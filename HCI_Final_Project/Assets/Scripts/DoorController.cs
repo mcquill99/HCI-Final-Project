@@ -6,8 +6,12 @@ using NaughtyAttributes;
 public class DoorController : MonoBehaviour
 {
     [BoxGroup("Settings")][ReorderableList]public List<DoorPiece> doorPieces;
+    [BoxGroup("Settings")]public GameObject navMeshObstacle;
     [BoxGroup("Settings")]public float doorAnimationDuration = 1f;
     [BoxGroup("Settings")]public AnimationCurve doorEasingCurve;
+    [BoxGroup("Settings")]public bool isAutoDoor;
+    [BoxGroup("Settings")][ShowIf("isAutoDoor")]public TriggerEvents autoDoorTrigger;
+
 
     [Space]
     [BoxGroup("Events")] public BoolUnityEvent onDoorChangedEvent;
@@ -22,6 +26,13 @@ public class DoorController : MonoBehaviour
     private bool isAnimating = false;
     private float doorAnimTimestamp;
 
+    void Start() {
+        if(isAutoDoor) {
+            autoDoorTrigger.onTriggerEnterDelegate += openDoor;
+            autoDoorTrigger.onTriggerExitDelegate += closeDoor;
+        }
+    }
+
     void Update()
     {
         float progress = 1f - (Mathf.Clamp(doorAnimTimestamp - Time.time, 0, doorAnimationDuration) / doorAnimationDuration);
@@ -30,6 +41,10 @@ public class DoorController : MonoBehaviour
             piece.doorTransform.position = Vector3.Lerp(isGoalOpen ? piece.closedTransform.position : piece.openTransform.position, isGoalOpen ? piece.openTransform.position : piece.closedTransform.position, doorEasingCurve.Evaluate(progress));
             piece.doorTransform.rotation = Quaternion.Lerp(isGoalOpen ? piece.closedTransform.rotation : piece.openTransform.rotation, isGoalOpen ? piece.openTransform.rotation : piece.closedTransform.rotation, doorEasingCurve.Evaluate(progress));
         }
+
+        if(navMeshObstacle)
+            navMeshObstacle.SetActive(isGoalOpen ? progress < 0.75f : progress > 0.25f);
+
         
         if(doorAnimTimestamp < Time.time && isAnimating) {
             isOpen = isGoalOpen;
@@ -71,6 +86,10 @@ public class DoorController : MonoBehaviour
             isAnimating = true;
             isGoalOpen = isOpen;
             doorAnimTimestamp = Time.time + doorAnimationDuration;
+        } else {
+            isAnimating = true;
+            isGoalOpen = isOpen;
+            doorAnimTimestamp = Time.time + (doorAnimationDuration - (doorAnimTimestamp - Time.time));
         }
     }
 

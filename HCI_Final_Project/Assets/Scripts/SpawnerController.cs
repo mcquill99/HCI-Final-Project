@@ -9,6 +9,7 @@ public class SpawnerController : MonoBehaviour
     [BoxGroup("Settings")]public GameObject creatureToSpawn;
     [BoxGroup("Settings")]public bool activeOnStart;
     [BoxGroup("Settings")]public int numToSpawn;
+    [BoxGroup("Settings")]public float timeBeforeFirstSpawn = 0f;
     [BoxGroup("Settings")]public float betweenSpawnDuration;
 
     [BoxGroup("Events")]public HealthControllerEvent onSpawnCreatureEvent;
@@ -40,6 +41,7 @@ public class SpawnerController : MonoBehaviour
     }
 
     public void activateSpawner() {
+        betweenSpawnTimestamp = Time.time + timeBeforeFirstSpawn;
         isActive = true;
         numSpawned = 0;
     }

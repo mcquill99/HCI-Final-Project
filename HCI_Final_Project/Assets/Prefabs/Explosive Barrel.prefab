@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7104042362548391626}
   - component: {fileID: 7104042362548391625}
   - component: {fileID: 7104042362548391624}
+  - component: {fileID: 2101732031577447177}
   m_Layer: 10
   m_Name: Explosive Barrel
   m_TagString: Untagged
@@ -108,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthController: {fileID: 0}
   maxHealth: 5
+  currentHealth: 0
   onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -131,5 +133,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 2608306769859063509, guid: 1f2bbdf9eba81b94185f8190bfd28563,
     type: 3}
-  explosionRadius: 5
+  explosionRadius: 4
   explosionDamage: 75
+--- !u!208 &2101732031577447177
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104042362548391623}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
