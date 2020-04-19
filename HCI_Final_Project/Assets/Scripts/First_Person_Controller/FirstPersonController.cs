@@ -25,12 +25,14 @@ namespace VHS
                     [BoxGroup("Locomotion Settings")] public float runSpeed = 3f;
                     [BoxGroup("Locomotion Settings")] public float jumpSpeed = 5f;
                     [BoxGroup("Locomotion Settings")] public int jumpAmount = 1;
+                    [BoxGroup("Locomotion Settings")] public float speedMultiplier = 1;
                     [BoxGroup("Locomotion Settings")][Slider(0f,1f)] public float moveBackwardsSpeedPercent = 0.5f;
                     [BoxGroup("Locomotion Settings")][Slider(0f,1f)]  public float moveSideSpeedPercent = 0.75f;
                 #endregion
 
                 #region Run Settings
                     [Space]
+                    [BoxGroup("Run Settings")] public bool canRun = true;
                     [BoxGroup("Run Settings")][Slider(-1f,1f)] public float canRunThreshold = 0.8f;
                     [BoxGroup("Run Settings")] public AnimationCurve runTransitionCurve = AnimationCurve.EaseInOut(0f,0f,1f,1f);
                 #endregion
@@ -334,6 +336,9 @@ namespace VHS
 
                 bool CanRun()
                 {
+                    if(!canRun) {
+                        return false;
+                    }
                     Vector3 _normalizedDir = Vector3.zero;
 
                     if(m_smoothFinalMoveDir != Vector3.zero)
@@ -376,7 +381,7 @@ namespace VHS
                     m_currentSpeed = movementInputData.InputVector.x != 0 && movementInputData.InputVector.y ==  0 ? m_currentSpeed * moveSideSpeedPercent :  m_currentSpeed;
                     m_currentSpeed = movementInputData.IsSliding ? slideSpeed * slideSpeedCurve.Evaluate(m_slideProgress) : m_currentSpeed;
                     m_currentSpeed = movementInputData.IsSliding && m_slopedSlideTimestamp > Time.time ? slopedSlideSpeed : m_currentSpeed;
-                
+                    m_currentSpeed *= speedMultiplier;
                 }
 
                 void CalculateFinalMovement()
@@ -685,12 +690,10 @@ namespace VHS
                 }
                 void HandleJump()
                 {
-                    //TODO: Fix this
                     if(movementInputData.JumpClicked) {
                         m_hasJumpedCooldown = Time.time + 0.1f;
                     }
                     if(movementInputData.JumpClicked && movementInputData.IsCrouching) {
-                        print("A");
                         InvokeCrouchRoutine(true);
                         movementInputData.IsSliding = false;
                         m_cameraController.isLockedCamera = false;

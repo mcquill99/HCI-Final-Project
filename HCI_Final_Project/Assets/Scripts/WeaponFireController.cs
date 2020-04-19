@@ -10,6 +10,8 @@ public class WeaponFireController : MonoBehaviour
 {
     
     [BoxGroup("References")] public GameObject muzzle;
+    [BoxGroup("References")] public bool useCamera;
+    [BoxGroup("References")][HideIf("useCamera")] public Transform aimingTransform;
     [BoxGroup("References")] public WeaponController weaponController;
     [Space]
     [BoxGroup("Settings")] public float damage;
@@ -17,6 +19,7 @@ public class WeaponFireController : MonoBehaviour
     [BoxGroup("Settings")] public int maxAmmo;
     [BoxGroup("Settings")] public int bulletsPerAmmo = 1;
     [BoxGroup("Settings")][Slider(0f, 1f)] public float inaccuracy;
+    [BoxGroup("Settings")] public LayerMask layers;
 
     [OnValueChanged("onFireModeChangedCallback")]
     [BoxGroup("Settings")] public FireMode fireMode;
@@ -27,6 +30,9 @@ public class WeaponFireController : MonoBehaviour
     [BoxGroup("Additional Settings")][ShowIf("isSemiAuto")]  private int numFiredInBurst;
     [BoxGroup("Additional Settings")][ShowIf("isSemiAuto")]  public float burstCooldown;
     [BoxGroup("Additional Settings")][ShowIf("isProjectile")]  public GameObject projectilePrefab;
+    [BoxGroup("Additional Settings")][ShowIf("isHitscan")]  public float effectiveDistance;
+    [BoxGroup("Additional Settings")][ShowIf("isHitscan")]  public AnimationCurve damageFalloff;
+    [BoxGroup("Additional Settings")][ShowIf("isHitscan")]  public ParticleSystem bulletHitEffect;
 
 
     private float burstTimestamp;
@@ -48,6 +54,10 @@ public class WeaponFireController : MonoBehaviour
     }
 
     public void Start() {
+        if(aimingTransform == null && useCamera) {
+            aimingTransform = Camera.main.transform;
+        }
+
         if(weaponController == null) {
             weaponController = GetComponent<WeaponController>();
         }
@@ -123,23 +133,29 @@ public class WeaponFireController : MonoBehaviour
 
     public void shootHitscan() {
         RaycastHit hit;
-        Transform cam = Camera.main.transform;
-        int layerMask = 1 | 1 << 9 | 1 << 13;
+        int layerMask = 1 | 1 << 9 | 1 << 13 | 1 << 10;
         float distanceFromCenter = Random.Range(0, inaccuracy);
-        float radians = accuracyConeNum / numConeSegments * 2f * Mathf.PI;
+        float radians = (accuracyConeNum * 1.0f) / numConeSegments * 2f * Mathf.PI;
         Vector2 accuracyOffset = new Vector2(distanceFromCenter * Mathf.Cos(radians), distanceFromCenter * Mathf.Sin(radians));
-        Vector3 trajectory = cam.forward + cam.rotation * accuracyOffset;
+        Vector3 adjustedOffset = aimingTransform.rotation * accuracyOffset;
+        Debug.DrawLine(aimingTransform.forward, aimingTransform.forward + adjustedOffset, Color.magenta);
+        Vector3 trajectory = aimingTransform.forward + adjustedOffset;
 
         accuracyConeNum = (accuracyConeNum + 1) % numConeSegments;
 
-        if(Physics.Raycast(cam.position, trajectory, out hit, 100000f, layerMask)) {
-            Debug.DrawLine(cam.position, hit.point, Color.yellow);
+        if(Physics.Raycast(aimingTransform.position, trajectory, out hit, 100000f, layerMask)) {
+            Debug.DrawLine(aimingTransform.position, hit.point, Color.yellow);
+
+            bulletHitEffect.transform.position = hit.point;
+            bulletHitEffect.transform.LookAt(hit.point + hit.normal);
+            bulletHitEffect.Emit(1);
 
             HealthControllerReferencer r = hit.collider.GetComponent<HealthControllerReferencer>();
             if(r != null) {
                 HealthController healthController = r.healthController;
                 if(healthController) {
-                    healthController.recieveDamage(damage);
+                    float dist = Mathf.Clamp(Vector3.Distance(hit.collider.ClosestPoint(transform.position), transform.position) / effectiveDistance, 0, 1f);
+                    healthController.recieveDamage(damage / bulletsPerAmmo * damageFalloff.Evaluate(dist));
                 }
             }
         }
@@ -147,16 +163,15 @@ public class WeaponFireController : MonoBehaviour
 
     public void shootProjectile() {
         RaycastHit hit;
-        Transform cam = Camera.main.transform;
         int layerMask = 1 | 1 << 9 | 1 << 13;
         Quaternion projectileRotation;
-        if(Physics.Raycast(cam.position, cam.forward, out hit, 100000f, layerMask)) {
+        if(Physics.Raycast(aimingTransform.position, aimingTransform.forward, out hit, 100000f, layerMask)) {
             projectileRotation = Quaternion.LookRotation(hit.point - muzzle.transform.position, Vector3.up);
         } else {
-            projectileRotation = Quaternion.LookRotation(cam.forward * 100000f - muzzle.transform.position, Vector3.up);
+            projectileRotation = Quaternion.LookRotation(aimingTransform.forward * 100000f - muzzle.transform.position, Vector3.up);
         }
         ProjectileController projectileController = ((GameObject)Instantiate(projectilePrefab, muzzle.transform.position, projectileRotation)).GetComponent<ProjectileController>();
-        projectileController.InitializeProjectile(damage, weaponController.firstPersonController.getVelocity());
+        projectileController.InitializeProjectile(damage, weaponController.firstPersonController.getVelocity(), layers);
     }
 
 }

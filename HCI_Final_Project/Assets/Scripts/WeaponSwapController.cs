@@ -64,7 +64,7 @@ public class WeaponSwapController : MonoBehaviour
         }
 
         //animate the screen blur and timescale
-        float progress = Mathf.Clamp(Time.unscaledTime - keyChangeTimestamp, 0, timeScaleChangeDuration) / timeScaleChangeDuration;
+        float progress = 1f - (Mathf.Clamp(keyChangeTimestamp - Time.unscaledTime, 0, timeScaleChangeDuration) / timeScaleChangeDuration);
         Time.timeScale = Mathf.Lerp(isGoalSlow ? regularTimeScale : slowDownTimeScale, isGoalSlow ? slowDownTimeScale : regularTimeScale, slowDownCurve.Evaluate(progress));
         blurVolume.weight = Mathf.Lerp(isGoalSlow ? 0 : 1, isGoalSlow ? 1 : 0, slowDownCurve.Evaluate(progress));
     }

@@ -21,9 +21,9 @@ public class WeaponController : MonoBehaviour
     [BoxGroup("Events")] public UnityEvent onFireStartEvent;   //Called once when fire key is pressed down
     [BoxGroup("Events")] public UnityEvent onFireStayEvent;    //Called continuously while fire key is pressed down
     [BoxGroup("Events")] public UnityEvent onFireStopEvent;    //Called once when fire key is released
-    public VoidEvent onFireStartDelegate;
-    public VoidEvent onFireStayDelegate;
-    public VoidEvent onFireStopDelegate;    
+    public VoidDelegate onFireStartDelegate;
+    public VoidDelegate onFireStayDelegate;
+    public VoidDelegate onFireStopDelegate;    
 
     [Space]
 
@@ -34,7 +34,7 @@ public class WeaponController : MonoBehaviour
 
     //Called when weapon is equiped
     void OnEnable() {
-        equipAnimTimeStamp = Time.time;
+        equipAnimTimeStamp = Time.time + equipAnimDuration;
         weaponVisual.transform.position = unequipedPoint.transform.position;
         weaponVisual.transform.rotation = unequipedPoint.transform.rotation;
     }
@@ -55,7 +55,7 @@ public class WeaponController : MonoBehaviour
     void Update()
     {
         //Animate weapon position and rotation
-        float progress = Mathf.Clamp(Time.time - equipAnimTimeStamp, 0, equipAnimDuration) / equipAnimDuration;
+        float progress = 1f - (Mathf.Clamp(equipAnimTimeStamp - Time.time, 0, equipAnimDuration) / equipAnimDuration);
         weaponVisual.transform.position = Vector3.Lerp(unequipedPoint.position, equipedPoint.position, equipAnimCurve.Evaluate(progress));
         weaponVisual.transform.rotation = Quaternion.Lerp(unequipedPoint.rotation, equipedPoint.rotation, equipAnimCurve.Evaluate(progress));
         

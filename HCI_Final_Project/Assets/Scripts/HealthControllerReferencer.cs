@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class HealthControllerReferencer : MonoBehaviour
 {
-    public HealthController healthController;
+    [BoxGroup("References")]public HealthController healthController;
 }

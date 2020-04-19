@@ -31,7 +31,7 @@ public class LegWalkerController : MonoBehaviour
 
         RaycastHit hit;
         if(Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hit, 5f, 1<<9)) {
-            body.position = Vector3.Lerp(body.position, goalPos, Time.deltaTime * 12f);
+            //body.position = Vector3.Lerp(body.position, goalPos, Time.deltaTime * 12f);
         }
     }
 }
