@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using NaughtyAttributes;
 public class ExplosiveBarrelController : MonoBehaviour
 {
-    public GameObject explosionPrefab;
-    public float explosionRadius;
-    public float explosionDamage;
+    [BoxGroup("Settings")]public GameObject explosionPrefab;
+    [BoxGroup("Settings")]public float explosionRadius;
+    [BoxGroup("Settings")]public float explosionDamage;
 
     private HealthControllerReferencer healthControllerReferencer;
     private HealthController healthController;

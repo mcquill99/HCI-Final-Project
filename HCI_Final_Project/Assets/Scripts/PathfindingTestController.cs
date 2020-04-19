@@ -10,6 +10,7 @@ public class PathfindingTestController : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        target = GameObject.Find("Player");
     }
 
     void Update()

@@ -46,7 +46,7 @@ public class LegController : MonoBehaviour
         }
 
         if(isGrounded) {
-            float progress = Mathf.Clamp(Time.time - stepTimestamp, 0, stepDuration) / stepDuration;
+            float progress = 1f - (Mathf.Clamp(stepTimestamp - Time.time, 0, stepDuration) / stepDuration);
             if(progress < 1) {
                 Vector3 targetPosition = Vector3.Lerp(currentPlacement, goalPlacement, XZEasingCurve.Evaluate(progress));
                 targetPosition.y += YEasingCurve.Evaluate(progress) * stepHeight;
@@ -57,7 +57,7 @@ public class LegController : MonoBehaviour
             }
 
             if(Vector3.Distance(currentPlacement, casterPlacement) > strideLength && stepTimestamp + stepDuration < Time.time && stepCooldownTimestamp < Time.time) {
-                stepTimestamp = Time.time;
+                stepTimestamp = Time.time + stepDuration;
                 stepCooldownTimestamp = Time.time + Random.Range(stepCooldown.x, stepCooldown.y);
                 //currentPlacement = goalPlacement;
                 goalPlacement = casterPlacement;

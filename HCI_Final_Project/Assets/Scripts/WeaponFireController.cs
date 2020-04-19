@@ -19,6 +19,7 @@ public class WeaponFireController : MonoBehaviour
     [BoxGroup("Settings")] public int maxAmmo;
     [BoxGroup("Settings")] public int bulletsPerAmmo = 1;
     [BoxGroup("Settings")][Slider(0f, 1f)] public float inaccuracy;
+    [BoxGroup("Settings")] public LayerMask layers;
 
     [OnValueChanged("onFireModeChangedCallback")]
     [BoxGroup("Settings")] public FireMode fireMode;
@@ -162,7 +163,7 @@ public class WeaponFireController : MonoBehaviour
             projectileRotation = Quaternion.LookRotation(aimingTransform.forward * 100000f - muzzle.transform.position, Vector3.up);
         }
         ProjectileController projectileController = ((GameObject)Instantiate(projectilePrefab, muzzle.transform.position, projectileRotation)).GetComponent<ProjectileController>();
-        projectileController.InitializeProjectile(damage, weaponController.firstPersonController.getVelocity());
+        projectileController.InitializeProjectile(damage, weaponController.firstPersonController.getVelocity(), layers);
     }
 
 }

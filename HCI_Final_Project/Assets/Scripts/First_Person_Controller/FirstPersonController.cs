@@ -31,6 +31,7 @@ namespace VHS
 
                 #region Run Settings
                     [Space]
+                    [BoxGroup("Run Settings")] public bool canRun = true;
                     [BoxGroup("Run Settings")][Slider(-1f,1f)] public float canRunThreshold = 0.8f;
                     [BoxGroup("Run Settings")] public AnimationCurve runTransitionCurve = AnimationCurve.EaseInOut(0f,0f,1f,1f);
                 #endregion
@@ -334,6 +335,9 @@ namespace VHS
 
                 bool CanRun()
                 {
+                    if(!canRun) {
+                        return false;
+                    }
                     Vector3 _normalizedDir = Vector3.zero;
 
                     if(m_smoothFinalMoveDir != Vector3.zero)

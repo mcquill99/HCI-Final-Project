@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using NaughtyAttributes;
 public class ExplosionController : MonoBehaviour
 {
+    [BoxGroup("Settings")]public AnimationCurve damageFalloffCurve;
 
     private float radius;
     private float damage;
-    public AnimationCurve damageFalloffCurve;
 
     public void initExplosion(float radius, float damage) {
 
@@ -23,8 +23,10 @@ public class ExplosionController : MonoBehaviour
             HealthControllerReferencer hcr = col.GetComponent<HealthControllerReferencer>();
             float val = Vector3.Magnitude(col.transform.position - transform.position) / radius;
             float calculatedDamage = damage * damageFalloffCurve.Evaluate(val);
-            print(calculatedDamage);
-            hcr.healthController.recieveDamage(calculatedDamage);
+            //print(calculatedDamage);
+            if(hcr != null) {
+                hcr.healthController.recieveDamage(calculatedDamage);
+            }
         }
         Destroy(gameObject, 2f);
     }

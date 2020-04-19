@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using NaughtyAttributes;
 public class InteractionController : MonoBehaviour
 {
 
-    public float interactionDistance;
+    [BoxGroup("Settings")]public float interactionDistance;
 
-    public UnityEvent onInteractEvent;
-    public VoidDelegate onInteractDelegate;
+    [BoxGroup("Events")]public UnityEvent onInteractEvent;
+    [BoxGroup("Events")]public VoidDelegate onInteractDelegate;
 
 
     void Update()

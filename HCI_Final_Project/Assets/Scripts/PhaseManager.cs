@@ -4,9 +4,9 @@ using UnityEngine;
 using NaughtyAttributes;
 public class PhaseManager : MonoBehaviour
 {
-    public bool startPhaseOnStart = true;
-    [ReorderableList]public List<Phase> phases;
-    private int currentPhaseIndex;
+    [BoxGroup("Settings")]public bool startPhaseOnStart = true;
+    [BoxGroup("Settings")][ReorderableList]public List<Phase> phases;
+    [BoxGroup("DEBUG")][ReadOnly]public int currentPhaseIndex;
 
     void Start() {
         if(startPhaseOnStart) {

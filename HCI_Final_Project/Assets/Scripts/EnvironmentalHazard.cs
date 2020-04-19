@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using NaughtyAttributes;
 public class EnvironmentalHazard : MonoBehaviour
 {
-    public float damagePerTick;
-    public float tickPerSecond;
+    [BoxGroup("Settings")]public float damagePerTick;
+    [BoxGroup("Settings")]public float tickPerSecond;
     private float tickTimestamp;
     private List<HealthController> effectedCreatures;
 

@@ -37,7 +37,7 @@ public class LeverController : MonoBehaviour
 
     void Update()
     {
-        float progress = Mathf.Clamp(Time.time - flipTimestamp, 0, switchDuration) / switchDuration;
+        float progress = 1f - (Mathf.Clamp(flipTimestamp - Time.time, 0, switchDuration) / switchDuration);
         
         pivot.localRotation = Quaternion.Lerp(isGoalOn ? offRotation : onRotation, isGoalOn ? onRotation : offRotation, leverEasingCurve.Evaluate(progress));
 

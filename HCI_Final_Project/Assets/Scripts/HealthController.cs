@@ -5,18 +5,18 @@ using UnityEngine.Events;
 using NaughtyAttributes;
 public class HealthController : HealthControllerReferencer
 {
-    public float maxHealth;
+    [BoxGroup("Settings")]public float maxHealth;
     [ReadOnly]public float currentHealth;
 
-    public UnityEvent onDeathEvent;
-    public VoidDelegate onDeathDelegate;
+    [BoxGroup("Events")]public UnityEvent onDeathEvent;
+    [BoxGroup("Events")]public VoidDelegate onDeathDelegate;
 
-    public SingleUnityEvent onRecieveDamageEvent;
-    public SingleDelegate onRecieveDamageDelegate;
+    [BoxGroup("Events")]public SingleUnityEvent onRecieveDamageEvent;
+    [BoxGroup("Events")]public SingleDelegate onRecieveDamageDelegate;
 
 
-    public SingleUnityEvent onHealthChangedEvent;
-    public SingleDelegate onHealthChangedDelegate;
+    [BoxGroup("Events")]public SingleUnityEvent onHealthChangedEvent;
+    [BoxGroup("Events")]public SingleDelegate onHealthChangedDelegate;
 
     void Awake()
     {
