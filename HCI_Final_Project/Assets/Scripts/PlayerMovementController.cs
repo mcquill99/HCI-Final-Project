@@ -12,6 +12,7 @@ public class PlayerMovementController : MovementController
     }
     
     protected override void LateUpdate() {
+        this.velocity = controller.getVelocity();
         controller.speedMultiplier = this.speedMultiplier;
         
         base.LateUpdate();

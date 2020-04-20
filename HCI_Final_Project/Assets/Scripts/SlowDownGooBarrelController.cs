@@ -5,6 +5,7 @@ using NaughtyAttributes;
 
 public class SlowDownGooBarrelController : MonoBehaviour
 {
+    [Tooltip("Prefab to instantiate when barrel dies")]
     [BoxGroup("Settings")]public GameObject gooPrefab;
     private bool hasExploded = false;
     private HealthController healthController;

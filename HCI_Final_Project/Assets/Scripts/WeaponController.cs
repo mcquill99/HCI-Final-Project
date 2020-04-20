@@ -6,20 +6,36 @@ using NaughtyAttributes;
 
 public class WeaponController : MonoBehaviour
 {
-    [BoxGroup("References")] public GameObject weaponVisual;
-    [BoxGroup("References")] public Transform unequipedPoint;
-    [BoxGroup("References")] public VHS.FirstPersonController firstPersonController;
-    [BoxGroup("References")] public Transform equipedPoint;
+    [Tooltip("Reference to weapon visual for animation")]
+    [Required][BoxGroup("References")] public GameObject weaponVisual;
+
+    [Tooltip("Reference to unequiped transform for animation. Uses position and rotation")]
+    [Required][BoxGroup("References")] public Transform unequipedPoint;
+
+    [Tooltip("Reference to equiped transform for animation. Uses position and rotation")]
+    [Required][BoxGroup("References")] public Transform equipedPoint;
+    
+    //TODO: Fix this to not be specific to player
+    [Tooltip("Reference to Movement Controller. Used for tracking velocity")]
+    [Required][BoxGroup("References")] public MovementController movementController;
 
     [Space]
 
+    [Tooltip("Duration of time in seconds for the equip animation")]
     [BoxGroup("Settings")] public float equipAnimDuration = 0.5f; //duration of the equip animation
+
+    [Tooltip("Easing curve for equip animation used for both position and rotation")]
     [BoxGroup("Settings")] public AnimationCurve equipAnimCurve;  //Easing curve for equip animation
     
     [Space]
 
+    [Tooltip("UnityEvent called when fire key is pressed down. Delegate onFireStartDelegate also executed")]
     [BoxGroup("Events")] public UnityEvent onFireStartEvent;   //Called once when fire key is pressed down
+
+    [Tooltip("UnityEvent called when fire key is held down. Delegate onFireStayDelegate also executed")]
     [BoxGroup("Events")] public UnityEvent onFireStayEvent;    //Called continuously while fire key is pressed down
+
+    [Tooltip("UnityEvent called when fire key is released. Delegate onFireStopDelegate also executed")]
     [BoxGroup("Events")] public UnityEvent onFireStopEvent;    //Called once when fire key is released
     public VoidDelegate onFireStartDelegate;
     public VoidDelegate onFireStayDelegate;
@@ -27,6 +43,7 @@ public class WeaponController : MonoBehaviour
 
     [Space]
 
+    [Tooltip("Is weapon able to fire/done with animation")]
     [BoxGroup("DEBUG")][ShowNonSerializedField] private bool isEquiped; //whether or not the weapon can fire
     private float equipAnimTimeStamp; //represents time that weapon was equiped. Is used for animation
     

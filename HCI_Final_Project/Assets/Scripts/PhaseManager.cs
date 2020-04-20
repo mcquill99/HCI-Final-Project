@@ -4,8 +4,13 @@ using UnityEngine;
 using NaughtyAttributes;
 public class PhaseManager : MonoBehaviour
 {
+    [Tooltip("If true, starts first phase on manager instantiation")]
     [BoxGroup("Settings")]public bool startPhaseOnStart = true;
+
+    [Tooltip("List of phases in order")]
     [BoxGroup("Settings")][ReorderableList]public List<Phase> phases;
+    
+    [Tooltip("Current phase")]
     [BoxGroup("DEBUG")][ReadOnly]public int currentPhaseIndex;
 
     void Start() {
@@ -35,5 +40,7 @@ public class PhaseManager : MonoBehaviour
 
 [System.Serializable]
 public class Phase {    
+
+    [Tooltip("Spawners to automatically activate on phase start")]
     public List<SpawnerController> spawners;
 }
