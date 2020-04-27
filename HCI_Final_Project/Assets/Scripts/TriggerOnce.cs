@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EugenePrintTest : MonoBehaviour
+public class TriggerOnce : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class EugenePrintTest : MonoBehaviour
         
     }
 
-    public void TestPrint(){
-        Debug.Log("Trigger01 Entered");
+    public void runOnce(){
+        gameObject.SetActive(false);
     }
 }
