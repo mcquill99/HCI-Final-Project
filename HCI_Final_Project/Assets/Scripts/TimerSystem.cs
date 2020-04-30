@@ -16,22 +16,22 @@ public class TimerSystem : MonoBehaviour
 
     public int splitIndex = 0; //split iterator
 
-    private List<float> currentRun = new List<float>(); //current splits
+    [ReorderableList]public List<Split> splits = new List<Split>(); //current splits
     public SplitList bestSplits; // list of all splits
 
     private static string filePath; //file path to save to
 
-    public GameObject totalTime; //text object to display time to complete
-    public GameObject SplitNamesUI; //names of the splits that appear on screen
-    public GameObject SplitTimesUI; //times for each split that appear on screen
-    public GameObject differenceInTimesUI; //displayes + or - in advantage
+    public Text totalTime; //text object to display time to complete
+    public Text SplitNamesUI; //names of the splits that appear on screen
+    public Text SplitTimesUI; //times for each split that appear on screen
+    public Text differenceInTimesUI; //displayes + or - in advantage
 
     public static float getTimerTime()
     {
         if(isRunning){
             currentTime = Time.time - timerStartTime;
         }
-        return currentTime;;
+        return currentTime;
     }
 
     // starts the timer
@@ -39,14 +39,33 @@ public class TimerSystem : MonoBehaviour
     {
         timerStartTime = Time.time;
         isRunning = true;
+        splitIndex = 0;
+        differenceInTimesUI.text = "";
     }
 
     // splits each section
-    public void splitTimer()
+    public void splitTimer(int splitNumber)
     {
+        if(!isRunning) {
+            Debug.LogWarning("Attempting to start split " + splitNumber + " without timer running.");
+            return;
+        }
+        
+        if(splitNumber != splitIndex + 1) {
+            Debug.LogWarning("Attempting to start split " + splitNumber + " out of order");
+            return;
+        }
+
+        if(splitNumber > splits.Count) {
+            Debug.LogError("Attempting to start split " + splitNumber + ". This exceeds the current level's split amount of " + splits.Count);
+            return;
+        }
+
+        splitIndex = splitNumber - 1;
+
         currentTime = getTimerTime();
-        float bestTime = float.Parse(bestSplits.splits[splitIndex].time);
-        currentRun[splitIndex] = currentTime;
+        float bestTime = bestSplits.splits[splitIndex].time;
+        splits[splitIndex].time = currentTime;
 
         float difference = currentTime - bestTime;
 
@@ -54,14 +73,14 @@ public class TimerSystem : MonoBehaviour
         {
             if(bestTime != 0.00F)
             {
-                differenceInTimesUI.GetComponent<Text>().text = differenceInTimesUI.GetComponent<Text>().text + "<color=green> " + difference.ToString("n2") + "</color>\n"; 
+                differenceInTimesUI.text = differenceInTimesUI.text + "<color=green> " + difference.ToString("n2") + "</color>\n"; 
             }
-            bestSplits.splits[splitIndex].time = currentTime.ToString("n2");
+            bestSplits.splits[splitIndex].time = currentTime;
 
         }
         else
         {
-             differenceInTimesUI.GetComponent<Text>().text = differenceInTimesUI.GetComponent<Text>().text + "<color=red> +" + difference.ToString("n2") + "</color>\n";
+             differenceInTimesUI.text = differenceInTimesUI.text + "<color=red> +" + difference.ToString("n2") + "</color>\n";
         }
         splitIndex++;
         
@@ -70,6 +89,11 @@ public class TimerSystem : MonoBehaviour
 
     // stops the timer, prints out all splits recorded
     public void stopTimer(){
+        if(splitIndex != splits.Count) {
+            Debug.LogWarning("Stopping timer before last split started");
+        }
+
+
         isRunning = false;
 
         foreach(Split split in bestSplits.splits)
@@ -82,11 +106,11 @@ public class TimerSystem : MonoBehaviour
     }
 
     public void updateSplitsUI(){
-        SplitTimesUI.GetComponent<Text>().text = "";
+        SplitTimesUI.text = "";
 
-        foreach(float split in currentRun)
+        foreach(Split split in splits)
         {
-            SplitTimesUI.GetComponent<Text>().text = SplitTimesUI.GetComponent<Text>().text + split.ToString("n2") + "\n";
+            SplitTimesUI.text = SplitTimesUI.text + split.time.ToString("n2") + "\n";
         }
     }
 
@@ -103,26 +127,34 @@ public class TimerSystem : MonoBehaviour
 
         }
 
-        foreach(Split split in bestSplits.splits)
+        string namesText = "";
+        string timesText = "";
+
+        for(int i = 0; i < splits.Count; i++)
         {
-            SplitNamesUI.GetComponent<Text>().text = SplitNamesUI.GetComponent<Text>().text + split.name + "\n";
-            SplitTimesUI.GetComponent<Text>().text = SplitTimesUI.GetComponent<Text>().text + split.time + "\n";
-            currentRun.Add(float.Parse(split.time));
+            Split s = splits[i];
+            namesText = namesText + s.name + "\n";
+            timesText = timesText + s.time + "\n";
+            // splits.Add(bestSplits.splits[i].time);
             
         }
 
-
+        differenceInTimesUI.text = "";
+        SplitNamesUI.text = namesText;
+        SplitTimesUI.text = timesText;
+        updateSplitsUI();
     }
 
     // Update is called once per frame
     void Update()
     {
         if(isRunning){
-            totalTime.GetComponent<Text>().text = getTimerTime().ToString("n2");
+            totalTime.text = getTimerTime().ToString("n2");
         }
     }
 
     public void saveJSON(){
+        print("Saving splits to: " + filePath);
         var toSave = JsonUtility.ToJson(bestSplits);
         File.WriteAllText(filePath, toSave);
     }
@@ -131,7 +163,7 @@ public class TimerSystem : MonoBehaviour
         var inputString = File.ReadAllText(filePath);
         bestSplits = JsonUtility.FromJson<SplitList>(inputString);
 
-        print("old splits");
+        print("Loading splits from: " + filePath);
         foreach(Split split in bestSplits.splits)
         {
             print(split.toString());
@@ -147,12 +179,12 @@ public class TimerSystem : MonoBehaviour
 [Serializable]
 public class Split{
     public string name; // name of the split
-    public string time; // how long the split took
+    public float time; // how long the split took
 
     // returns a string version of the object
     public string toString()
     { 
-        return name + " : " + time;
+        return name + " : " + time.ToString("n2");
     }
 }
 
