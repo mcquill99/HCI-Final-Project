@@ -135,7 +135,7 @@ public class TimerSystem : MonoBehaviour
             Split s = splits[i];
             namesText = namesText + s.name + "\n";
             timesText = timesText + s.time + "\n";
-            // splits.Add(bestSplits.splits[i].time);
+            splits[i].time = bestSplits.splits[i].time;
             
         }
 
