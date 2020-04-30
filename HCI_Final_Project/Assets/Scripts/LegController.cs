@@ -6,9 +6,12 @@ using UnityEngine.AI;
 public class LegController : MonoBehaviour
 {
     public CustomIK legIK;
-    public NavMeshAgent agent;
+    // public NavMeshAgent agent;
+    public CreatureMovementController controller;
     public float legSegmentLength = 1f;
     public Transform endPlacementCaster;
+    public Transform animatedGoalIK;
+    public Transform proceduralGoalIK;
 
     public AnimationCurve XZEasingCurve;
     public AnimationCurve YEasingCurve;
@@ -24,6 +27,7 @@ public class LegController : MonoBehaviour
     private Vector3 casterPlacement;
     private Vector3 goalPlacement;
     private Vector3 currentPlacement;
+    public float ikInfluence = 1f;
     void Start()
     {
         currentPlacement = legIK.targetIK.position;
@@ -32,13 +36,15 @@ public class LegController : MonoBehaviour
 
     void Update()
     {
-        if(agent.isOnOffMeshLink) {
-            legIK.targetIK.position = legIK.rootBone.position + Vector3.down * legSegmentLength;
-            return;
-        }
+        legIK.targetIK.position = Vector3.Lerp(animatedGoalIK.position, proceduralGoalIK.position, ikInfluence);
+
+        // if(agent.isOnOffMeshLink) {
+        //     proceduralGoalIK.position = legIK.rootBone.position + Vector3.down * legSegmentLength;
+        //     return;
+        // }
 
         RaycastHit hit;
-        if(Physics.Raycast(endPlacementCaster.position + agent.velocity * overStepAmount, endPlacementCaster.forward, out hit, 4 * legSegmentLength, 1<<9)) {
+        if(Physics.Raycast(endPlacementCaster.position + controller.getVelocity() * overStepAmount, endPlacementCaster.forward, out hit, 4 * legSegmentLength, 1<<9)) {
             casterPlacement = hit.point;
             isGrounded = true;
         } else {
@@ -50,13 +56,14 @@ public class LegController : MonoBehaviour
             if(progress < 1) {
                 Vector3 targetPosition = Vector3.Lerp(currentPlacement, goalPlacement, XZEasingCurve.Evaluate(progress));
                 targetPosition.y += YEasingCurve.Evaluate(progress) * stepHeight;
-                legIK.targetIK.position = targetPosition;
+                proceduralGoalIK.position = targetPosition;
             } else {
                 currentPlacement = goalPlacement;
-                legIK.targetIK.position = currentPlacement;
+                proceduralGoalIK.position = currentPlacement;
             }
 
             if(Vector3.Distance(currentPlacement, casterPlacement) > strideLength && stepTimestamp + stepDuration < Time.time && stepCooldownTimestamp < Time.time) {
+                
                 stepTimestamp = Time.time + stepDuration;
                 stepCooldownTimestamp = Time.time + Random.Range(stepCooldown.x, stepCooldown.y);
                 //currentPlacement = goalPlacement;
@@ -69,8 +76,8 @@ public class LegController : MonoBehaviour
         }
 
         Debug.DrawLine(endPlacementCaster.position, casterPlacement, Color.cyan);
-        Debug.DrawLine(legIK.targetIK.position, currentPlacement, Color.green);
-        Debug.DrawLine(legIK.targetIK.position, goalPlacement, Color.red);
+        Debug.DrawLine(proceduralGoalIK.position, currentPlacement, Color.green);
+        Debug.DrawLine(proceduralGoalIK.position, goalPlacement, Color.red);
 
     }
 

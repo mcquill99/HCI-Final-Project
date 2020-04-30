@@ -162,6 +162,9 @@ public class WeaponFireController : MonoBehaviour
             }
         }
         currentAmmo--;
+        WeaponAnimationSyncController.instance.setFloat("fireRate", fireRate);
+        WeaponAnimationSyncController.instance.setTrigger("fire");
+
     }
 
     public void shootHitscan() {

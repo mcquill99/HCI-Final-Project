@@ -44,24 +44,27 @@ public class WeaponController : MonoBehaviour
     [Space]
 
     [Tooltip("Is weapon able to fire/done with animation")]
-    [BoxGroup("DEBUG")][ShowNonSerializedField] private bool isEquiped; //whether or not the weapon can fire
+    [BoxGroup("DEBUG")][ShowNonSerializedField] public bool isEquiped; //whether or not the weapon can fire
     private float equipAnimTimeStamp; //represents time that weapon was equiped. Is used for animation
     
     
 
     //Called when weapon is equiped
     void OnEnable() {
-        equipAnimTimeStamp = Time.time + equipAnimDuration;
-        weaponVisual.transform.position = unequipedPoint.transform.position;
-        weaponVisual.transform.rotation = unequipedPoint.transform.rotation;
+        //equipAnimTimeStamp = Time.time + equipAnimDuration;
+        //weaponVisual.transform.position = unequipedPoint.transform.position;
+        //weaponVisual.transform.rotation = unequipedPoint.transform.rotation;
+        //WeaponAnimationSyncController.instance.addAnimator(gameObject.GetComponentInChildren<Animator>());
+        //WeaponAnimationSyncController.instance.setBool("isEquiped", true);
     }
 
     //Called when weapon is unequiped
     void OnDisable() {
-        isEquiped = false;
-        weaponVisual.transform.position = unequipedPoint.transform.position;
-        weaponVisual.transform.rotation = unequipedPoint.transform.rotation;
-        
+        //isEquiped = false;
+        //weaponVisual.transform.position = unequipedPoint.transform.position;
+        //weaponVisual.transform.rotation = unequipedPoint.transform.rotation;
+        //WeaponAnimationSyncController.instance.setBool("isEquiped", false);
+
     }
 
     void Start()
@@ -72,14 +75,25 @@ public class WeaponController : MonoBehaviour
     void Update()
     {
         //Animate weapon position and rotation
-        float progress = 1f - (Mathf.Clamp(equipAnimTimeStamp - Time.time, 0, equipAnimDuration) / equipAnimDuration);
-        weaponVisual.transform.position = Vector3.Lerp(unequipedPoint.position, equipedPoint.position, equipAnimCurve.Evaluate(progress));
-        weaponVisual.transform.rotation = Quaternion.Lerp(unequipedPoint.rotation, equipedPoint.rotation, equipAnimCurve.Evaluate(progress));
+        //float progress = 1f - (Mathf.Clamp(equipAnimTimeStamp - Time.time, 0, equipAnimDuration) / equipAnimDuration);
+        //weaponVisual.transform.position = Vector3.Lerp(unequipedPoint.position, equipedPoint.position, equipAnimCurve.Evaluate(progress));
+        //weaponVisual.transform.rotation = Quaternion.Lerp(unequipedPoint.rotation, equipedPoint.rotation, equipAnimCurve.Evaluate(progress));
         
         //If animation is finished, count weapon as equiped
-        if(progress == 1f) {
-            isEquiped = true;
+        // if(progress == 1f) {
+        //     isEquiped = true;
+        // }
+
+        if(weaponVisual) {
+            weaponVisual.SetActive(isEquiped);
+
+            // Quaternion currRot = weaponVisual.transform.parent.localRotation;
+            
+
+            // weaponVisual.transform.parent.localRotation = Quaternion.Lerp(weaponVisual.transform.parent.localRotation, Quaternion.Euler(-1 * movementController.getVelocity()), Time.deltaTime * 5f);
         }
+
+
 
         //if weapon is equiped, it can be used
         if(isEquiped) {
@@ -121,6 +135,6 @@ public class WeaponController : MonoBehaviour
     }
 
     public bool getIsEquiped() {
-        return isEquiped;
+        return isEquiped && WeaponAnimationSyncController.instance.getAnimationEquiped();
     }
 }

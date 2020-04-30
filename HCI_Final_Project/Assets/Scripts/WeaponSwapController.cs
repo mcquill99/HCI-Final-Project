@@ -7,6 +7,7 @@ public class WeaponSwapController : MonoBehaviour
 {
     [Tooltip("Reference to radial menu UI")]
     [Required][BoxGroup("References")] public GameObject radialMenu;
+    [Required][BoxGroup("References")] public WeaponAnimationSyncController animationSyncer;
     
     [Tooltip("Reference to post process volume with blur effect")]
     [Required][BoxGroup("References")] public PostProcessVolume blurVolume; 
@@ -38,7 +39,7 @@ public class WeaponSwapController : MonoBehaviour
     [BoxGroup("DEBUG")][ShowNonSerializedField] private bool isGoalSlow = false; //is the goal to open the menu or close it
     [BoxGroup("DEBUG")][ShowNonSerializedField] private int currentWeaponIndex;
     private const int TOTAL_NUM_WEAPONS = 4;
-    private List<Transform> weapons;
+    private List<WeaponController> weapons;
 
     void Start()
     {
@@ -46,14 +47,14 @@ public class WeaponSwapController : MonoBehaviour
         radialMenu.SetActive(false);
 
         //Populate weapon list with all weapons
-        weapons = new List<Transform>();
+        weapons = new List<WeaponController>();
         foreach(Transform t in weaponsHolder) {
-            weapons.Add(t);
+            weapons.Add(t.GetComponentInChildren<WeaponController>());
         }
 
         //Set current weapon index and choose a weapon that isn't that index to play the equip animation
-        currentWeaponIndex = 0;
-        chooseWeapon(1);
+        currentWeaponIndex = -1;
+        chooseWeapon(0);
 
     }
 
@@ -70,7 +71,7 @@ public class WeaponSwapController : MonoBehaviour
         }
 
         //if the user scrolls, that changes the equiped weapon
-        if(Input.mouseScrollDelta.y != 0) {
+        if(Input.mouseScrollDelta.y != 0 && WeaponAnimationSyncController.instance.getCanEquip()) {
             int choice = currentWeaponIndex + Mathf.Clamp(Mathf.CeilToInt(Input.mouseScrollDelta.y), -1, 1);
             choice = choice % TOTAL_NUM_WEAPONS;
             choice = choice < 0 ? choice + TOTAL_NUM_WEAPONS : choice;
@@ -109,11 +110,20 @@ public class WeaponSwapController : MonoBehaviour
         disableWeaponMenu();
         //print("CHOSE WEAPON : " + weaponNum);
         //if the chosen weapon isn't the already equiped one, equip it
-        if(weaponNum != currentWeaponIndex) {
+        if(weaponNum != currentWeaponIndex ) {
             currentWeaponIndex = weaponNum;
             for(int i = 0; i < weapons.Count; i++) {
-                weapons[i].gameObject.SetActive(i==currentWeaponIndex);
+                weapons[i].isEquiped = i==currentWeaponIndex;
             }
+
+            WeaponAnimationSyncController.instance.setTrigger("equip");
         }
+
+        
+
+        // Animator a = weapons[currentWeaponIndex].GetComponentInChildren<Animator>();
+        // if(a) {
+        //     animationSyncer.addAnimator(a);
+        // }
     }
 }

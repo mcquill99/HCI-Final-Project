@@ -5,9 +5,10 @@ using NaughtyAttributes;
 using UnityEngine.AI;
 
 using System.Threading.Tasks;
-using UnityEditor;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+
+//BEWARE. THIS FILE IS CURSED
 
 [System.Serializable]
 public class AIGridGenerator : MonoBehaviour
@@ -15,15 +16,16 @@ public class AIGridGenerator : MonoBehaviour
     [BoxGroup("Settings")] public NavMeshSurface navMesh;
     [BoxGroup("Settings")] public Transform player;
 
-    [BoxGroup("Settings")] public float pointDistance;
     [BoxGroup("DEBUG")] public bool showPoints;
     [BoxGroup("DEBUG")][ReadOnly] public int numberOfPoints = 0;
+    [BoxGroup("DEBUG")][ReadOnly]public float pointDistance;
 
     private string fileName = "";
 
     private List<AIGridPoint> points;
     private List<SearializableAIGridPoint> serializedPoints;
     private Bounds gridBounds;
+    
     
 
     // public void OnBeforeSerialize() {
@@ -65,9 +67,9 @@ public class AIGridGenerator : MonoBehaviour
     [Button("Load Grid")]
     public void deserializeFromList() {
         string path = getFileName();
-        print("Reading in points from: " + path);
 
         if(!File.Exists(path)) {
+            print("Cannot find file at: " + path);
             return;
         }
         
@@ -81,6 +83,9 @@ public class AIGridGenerator : MonoBehaviour
         foreach(SearializableAIGridPoint p in serializedPoints) {
             points.Add(new AIGridPoint(new Vector3(p.pointX, p.pointY, p.pointZ)));
         }
+        numberOfPoints = points.Count;
+        print("Read in " + points.Count + " points from: " + path);
+
     }
 
     void OnDrawGizmosSelected() {
@@ -93,9 +98,10 @@ public class AIGridGenerator : MonoBehaviour
             float colorVal;
             if(Application.isPlaying) {
                 for(int i = 0; i < points.Count; i++) {
-                    if(Random.Range(0, 9) % 10 != 0 || points[(int)i].sqrProximityToPlayer > 1000f) continue;
+                    // if(Random.Range(0, 9) % 10 != 0 || points[i].sqrProximityToPlayer > 1000f) continue;
                     colorVal = points[i].sqrProximityToPlayer / 1000f;
                     colorVal = Mathf.Round(colorVal * 3) / 3f;
+                    colorVal = points[i].isVisible ? 1 : 0;
                     Gizmos.color = new Color(colorVal, 1 - colorVal, 0);
                     point = points[i];
                     Gizmos.DrawLine(point.getPoint() + Vector3.forward * pointDistance / 3f, point.getPoint() - Vector3.forward * pointDistance / 3f);
@@ -103,6 +109,7 @@ public class AIGridGenerator : MonoBehaviour
                 }
             } else {
                 for(int i = 0; i < points.Count; i++) {
+                    // print(points[i].point);
                     int index = i;
                     colorVal = points[index].sqrProximityToPlayer / 1000f;
                     Gizmos.color = new Color(colorVal, 1 - colorVal, 0);
@@ -120,6 +127,7 @@ public class AIGridGenerator : MonoBehaviour
     public void generateGrid() {
         points = new List<AIGridPoint>();
         numberOfPoints = 0;
+        pointDistance = NavMesh.GetSettingsByID(navMesh.agentTypeID).agentRadius * 3;
         gridBounds = new Bounds(navMesh.navMeshData.sourceBounds.center, navMesh.navMeshData.sourceBounds.size);
         print("Generating NavMesh with bounds: " + gridBounds.center + " | " + gridBounds.size);
         int numPointsX = Mathf.RoundToInt(gridBounds.size.x / pointDistance);
@@ -142,7 +150,7 @@ public class AIGridGenerator : MonoBehaviour
                     if(NavMesh.SamplePosition(point, out hit, pointDistance, filter)) {
                         
                         if(hit.position.y < point.y)
-                            points.Add(new AIGridPoint(point));
+                            points.Add(new AIGridPoint(hit.position));
                         
                         // print("Found point: " + point);
                     }
@@ -165,13 +173,19 @@ public class AIGridGenerator : MonoBehaviour
 
     void Update() {
         if(points != null) {
-            Vector3 playerPosition = player.position;
+            Vector3 playerPosition = player.position + Vector3.up;
+            int layerMask = 1 | 1<<9 | 1<<10;
+            float height = NavMesh.GetSettingsByID(navMesh.agentTypeID).agentHeight;
             // foreach(AIGridPoint p in points) {
             //     p.sqrProximityToPlayer = Vector3.SqrMagnitude(p.getPoint() - playerPosition);
             // }
             Parallel.ForEach(points, (p, state) => {
                 p.sqrProximityToPlayer = Vector3.SqrMagnitude(p.getPoint() - playerPosition);
             });
+            for(int i = 0; i < points.Count; i++) {
+                if(Random.Range(0, 9) % 10 != 0 || points[(int)i].sqrProximityToPlayer > 1000f) continue;
+                points[i].isVisible = Physics.Linecast(points[i].point + Vector3.up * height, playerPosition, layerMask);
+            }
         }
         
     }

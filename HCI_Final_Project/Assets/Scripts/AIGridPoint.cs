@@ -8,6 +8,7 @@ public class AIGridPoint {
     
     public Vector3 point;
     public float sqrProximityToPlayer;
+    public bool isVisible;
 
     public AIGridPoint(Vector3 point) {
         this.point = point;

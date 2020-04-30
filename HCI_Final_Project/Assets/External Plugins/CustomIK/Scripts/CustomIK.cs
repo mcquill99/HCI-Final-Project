@@ -19,6 +19,7 @@ public class CustomIK : MonoBehaviour {
 	public bool handRotation;
 	public bool isEnabled;
 	#endregion
+	
 
 	void Update () {
 		if (isEnabled) {
