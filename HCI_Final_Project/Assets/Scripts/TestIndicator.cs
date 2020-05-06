@@ -13,9 +13,9 @@ public class TestIndicator : MonoBehaviour
     }
     void Register()
     {
-        if(!DamageIndicatorSystem.CheckIfObjectInSight(this.transform))
+        if(!DamageIndicatorSystem.CheckIfObjectInSight(transform.position))
         {
-            DamageIndicatorSystem.CreateIndicator(this.transform, 50);
+            DamageIndicatorSystem.CreateIndicator(transform.position, 50);
         }
         Destroy(this.gameObject, destroyTimer);
     }

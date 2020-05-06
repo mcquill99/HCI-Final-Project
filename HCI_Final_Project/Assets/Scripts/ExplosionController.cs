@@ -27,7 +27,7 @@ public class ExplosionController : MonoBehaviour
             float calculatedDamage = damage * damageFalloffCurve.Evaluate(val);
             //print(calculatedDamage);
             if(hcr != null) {
-                hcr.healthController.recieveDamage(calculatedDamage);
+                hcr.healthController.recieveDamage(transform.position, calculatedDamage);
             }
         }
         Destroy(gameObject, 2f);

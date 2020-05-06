@@ -83,7 +83,9 @@ public class TimerSystem : MonoBehaviour
              differenceInTimesUI.text = differenceInTimesUI.text + "<color=red> +" + difference.ToString("n2") + "</color>\n";
         }
         splitIndex++;
-        
+
+        Canvas.ForceUpdateCanvases(); //bullshit
+
         updateSplitsUI();
     }
 

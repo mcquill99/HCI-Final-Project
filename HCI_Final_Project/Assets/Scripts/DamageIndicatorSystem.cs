@@ -18,24 +18,26 @@ public class DamageIndicatorSystem : MonoBehaviour
     [SerializeField]
     private float timer = 0.00F;
 
-    private Dictionary<Transform, DamageIndicator> Indicators = new Dictionary<Transform, DamageIndicator>();
+    private Dictionary<Vector3, DamageIndicator> Indicators = new Dictionary<Vector3, DamageIndicator>();
 
     #region Delegates
-    public static Action<Transform, float> CreateIndicator = delegate {};
-    public static Func<Transform, bool> CheckIfObjectInSight = null;
+    public static Action<Vector3, float> CreateIndicator = delegate {};
+    public static Func<Vector3, bool> CheckIfObjectInSight = null;
     #endregion
 
     private void OnEnable()
     {
-        CreateIndicator += Create;
+        CreateIndicator += AddDamageIndicator;
         CheckIfObjectInSight += InSight;
+    
+        player.gameObject.GetComponent<HealthController>().onRecieveDamageDelegate += AddDamageIndicator;
     }
 
     private void OnDisable()
     {
-
+        player.gameObject.GetComponent<HealthController>().onRecieveDamageDelegate -= AddDamageIndicator;
     }
-    void Create(Transform target, float damage)
+    public void AddDamageIndicator(Vector3 target, float damage)
     {
         if(Indicators.ContainsKey(target))
         {
@@ -47,9 +49,9 @@ public class DamageIndicatorSystem : MonoBehaviour
 
         Indicators.Add(target, newIndicator);
     }
-    bool InSight(Transform target)
+    bool InSight(Vector3 target)
     {
-        Vector3 screenPoint = camera.WorldToViewportPoint(target.position);
+        Vector3 screenPoint = camera.WorldToViewportPoint(target);
         return screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
     }
 }

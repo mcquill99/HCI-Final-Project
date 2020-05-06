@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public delegate void VoidDelegate();
 public delegate void SingleDelegate(float val);
+public delegate void DamageDelegate(Vector3 pos, float val);
 public delegate void BoolDelegate(bool val);
 public delegate void HealthControllerDelegate(HealthController val);
 

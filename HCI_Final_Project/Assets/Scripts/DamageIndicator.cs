@@ -46,7 +46,7 @@ public class DamageIndicator : MonoBehaviour
         }
     }
 
-    public Transform Target {get; protected set; }= null;
+    public Vector3 Target {get; protected set; }
     private Transform Player = null;
 
     private IEnumerator IE_Countdown = null;
@@ -55,7 +55,7 @@ public class DamageIndicator : MonoBehaviour
     private Quaternion targetRot = Quaternion.identity;
     private Vector3 targetPos = Vector3.zero;
 
-    public void Register(Transform target, Transform player, Action unRegister, float time, float damage)
+    public void Register(Vector3 target, Transform player, Action unRegister, float time, float damage)
     {
         this.Target = target;
         this.Player = player;
@@ -88,9 +88,9 @@ public class DamageIndicator : MonoBehaviour
     private IEnumerator Countdown()
     {
         float AlphaVal = Mathf.Clamp(185 + damage, 155, 255);
-        float RedVal = Mathf.Clamp(255 - (damage * 2),100, 255);
+        // float RedVal = Mathf.Clamp(255 - (damage * 2),100, 255);
 
-        CanvasGroup.GetComponentInChildren<Image>().GetComponent<Image>().color = new Color32((byte)RedVal,0,0,(byte)AlphaVal);
+        CanvasGroup.GetComponentInChildren<Image>().color = new Color(255,255,255,(byte)AlphaVal);
         while(CanvasGroup.alpha < 1.00F)
         {
             CanvasGroup.alpha += 4 * Time.deltaTime;
@@ -115,11 +115,9 @@ public class DamageIndicator : MonoBehaviour
     {
         while(enabled)
         {
-            if(Target)
-            {
-                targetPos = Target.position;
-                targetRot = Target.rotation;
-            }
+
+            targetPos = Target;
+            // targetRot = Target;
             Vector3 direction = Player.position - targetPos;
 
             targetRot = Quaternion.LookRotation(direction);
