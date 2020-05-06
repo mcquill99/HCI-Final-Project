@@ -22,7 +22,7 @@ public class AIGridGenerator : MonoBehaviour
 
     private string fileName = "";
 
-    private List<AIGridPoint> points;
+    public static List<AIGridPoint> points;
     private List<SearializableAIGridPoint> serializedPoints;
     private Bounds gridBounds;
     
