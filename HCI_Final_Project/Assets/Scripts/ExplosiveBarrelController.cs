@@ -32,6 +32,7 @@ public class ExplosiveBarrelController : MonoBehaviour
             ExplosionController controller = ((GameObject)Instantiate(explosionPrefab, transform.position, transform.rotation)).GetComponent<ExplosionController>();
 
             controller.initExplosion(explosionRadius, explosionDamage);
+            // DamageIndicatorSystem.CreateIndicator(this.transform, explosionDamage);
 
         }
         Destroy(healthController.gameObject);

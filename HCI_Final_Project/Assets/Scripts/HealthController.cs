@@ -18,7 +18,7 @@ public class HealthController : HealthControllerReferencer
 
     [Tooltip("UnityEvent called when controller recieves damage. Amount of damage passed through as parameter. Delegate onRecieveDamageDelegate also executed")]
     [BoxGroup("Events")]public SingleUnityEvent onRecieveDamageEvent;
-    [BoxGroup("Events")]public SingleDelegate onRecieveDamageDelegate;
+    [BoxGroup("Events")]public DamageDelegate onRecieveDamageDelegate;
 
     [Tooltip("UnityEvent called when health is changed. Changed health value is passed through as parameter. Delegate onHealthChanged also executed")]
     [BoxGroup("Events")]public SingleUnityEvent onHealthChangedEvent;
@@ -34,12 +34,12 @@ public class HealthController : HealthControllerReferencer
         currentHealth = maxHealth;
     }
 
-    public void recieveDamage(float amount) {
+    public void recieveDamage(Vector3 position, float amount) {
         currentHealth -= amount;
 
         onRecieveDamageEvent.Invoke(amount);
         if(onRecieveDamageDelegate != null) {
-            onRecieveDamageDelegate(amount);
+            onRecieveDamageDelegate(position, amount);
         }
 
         onHealthChangedEvent.Invoke(currentHealth);
