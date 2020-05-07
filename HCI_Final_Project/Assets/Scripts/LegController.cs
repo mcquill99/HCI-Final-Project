@@ -32,9 +32,11 @@ public class LegController : MonoBehaviour
     {
         currentPlacement = legIK.targetIK.position;
         goalPlacement = currentPlacement;
+        UpdateBypass.instance.onUpdate += onUpdate;
+
     }
 
-    void Update()
+    void onUpdate()
     {
         legIK.targetIK.position = Vector3.Lerp(animatedGoalIK.position, proceduralGoalIK.position, ikInfluence);
 

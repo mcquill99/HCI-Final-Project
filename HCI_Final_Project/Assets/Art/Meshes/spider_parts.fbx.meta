@@ -1,0 +1,139 @@
+fileFormatVersion: 2
+guid: afa8ff9f7e1b75c4394db624d2d6adbf
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Body Collision
+    100002: Body Inner
+    100004: Body Outer
+    100006: Lower Leg Collision
+    100008: Lower Leg Inner
+    100010: Lower Leg Outer
+    100012: //RootNode
+    100014: Upper Leg Collision
+    100016: Upper Leg Inner
+    100018: Upper Leg Outer
+    400000: Body Collision
+    400002: Body Inner
+    400004: Body Outer
+    400006: Lower Leg Collision
+    400008: Lower Leg Inner
+    400010: Lower Leg Outer
+    400012: //RootNode
+    400014: Upper Leg Collision
+    400016: Upper Leg Inner
+    400018: Upper Leg Outer
+    2100000: No Name
+    2300000: Body Collision
+    2300002: Body Inner
+    2300004: Body Outer
+    2300006: Lower Leg Collision
+    2300008: Lower Leg Inner
+    2300010: Lower Leg Outer
+    2300012: Upper Leg Collision
+    2300014: Upper Leg Inner
+    2300016: Upper Leg Outer
+    3300000: Body Collision
+    3300002: Body Inner
+    3300004: Body Outer
+    3300006: Lower Leg Collision
+    3300008: Lower Leg Inner
+    3300010: Lower Leg Outer
+    3300012: Upper Leg Collision
+    3300014: Upper Leg Inner
+    3300016: Upper Leg Outer
+    4300000: Body Outer
+    4300002: Upper Leg Collision
+    4300004: Lower Leg Outer
+    4300006: Body Collision
+    4300008: Body Inner
+    4300010: Upper Leg Inner
+    4300012: Upper Leg Outer
+    4300014: Lower Leg Collision
+    4300016: Lower Leg Inner
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 40
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -7,7 +7,7 @@ public class WeaponSwapController : MonoBehaviour
 {
     [Tooltip("Reference to radial menu UI")]
     [Required][BoxGroup("References")] public GameObject radialMenu;
-    [Required][BoxGroup("References")] public WeaponAnimationSyncController animationSyncer;
+    // [Required][BoxGroup("References")] public WeaponAnimationSyncController animationSyncer;
     
     [Tooltip("Reference to post process volume with blur effect")]
     [Required][BoxGroup("References")] public PostProcessVolume blurVolume; 
@@ -125,5 +125,9 @@ public class WeaponSwapController : MonoBehaviour
         // if(a) {
         //     animationSyncer.addAnimator(a);
         // }
+    }
+
+    public WeaponFireController getCurrentWeapon() {
+        return weapons[currentWeaponIndex].GetComponent<WeaponFireController>();
     }
 }

@@ -63,10 +63,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b1f00ada2e9984986a869c8892e446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 10
-  accelerationAmount: 12
+  initialSpeed: 25
+  accelerationAmount: 15
   destroyOnImpact: 1
-  explosionRadius: 3
+  explosionRadius: 4
   timeBeforeSelfDestruct: 4
   layers:
     serializedVersion: 2

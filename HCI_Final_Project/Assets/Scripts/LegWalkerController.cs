@@ -19,9 +19,10 @@ public class LegWalkerController : MonoBehaviour
     void Start()
     {
         legs = transform.GetComponentsInChildren<LegController>();
+        UpdateBypass.instance.onUpdate += onUpdate;
     }
 
-    void Update()
+    void onUpdate()
     {
 
 

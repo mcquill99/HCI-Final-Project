@@ -172,21 +172,21 @@ public class AIGridGenerator : MonoBehaviour
     }
 
     void Update() {
-        if(points != null) {
-            Vector3 playerPosition = player.position + Vector3.up;
-            int layerMask = 1 | 1<<9 | 1<<10;
-            float height = NavMesh.GetSettingsByID(navMesh.agentTypeID).agentHeight;
-            // foreach(AIGridPoint p in points) {
-            //     p.sqrProximityToPlayer = Vector3.SqrMagnitude(p.getPoint() - playerPosition);
-            // }
-            Parallel.ForEach(points, (p, state) => {
-                p.sqrProximityToPlayer = Vector3.SqrMagnitude(p.getPoint() - playerPosition);
-            });
-            for(int i = 0; i < points.Count; i++) {
-                if(Random.Range(0, 9) % 10 != 0 || points[(int)i].sqrProximityToPlayer > 1000f) continue;
-                points[i].isVisible = Physics.Linecast(points[i].point + Vector3.up * height, playerPosition, layerMask);
-            }
-        }
+        // if(points != null) {
+        //     Vector3 playerPosition = player.position + Vector3.up;
+        //     int layerMask = 1 | 1<<9 | 1<<10;
+        //     float height = NavMesh.GetSettingsByID(navMesh.agentTypeID).agentHeight;
+        //     // foreach(AIGridPoint p in points) {
+        //     //     p.sqrProximityToPlayer = Vector3.SqrMagnitude(p.getPoint() - playerPosition);
+        //     // }
+        //     Parallel.ForEach(points, (p, state) => {
+        //         p.sqrProximityToPlayer = Vector3.SqrMagnitude(p.getPoint() - playerPosition);
+        //     });
+        //     for(int i = 0; i < points.Count; i++) {
+        //         if(Random.Range(0, 9) % 10 != 0 || points[(int)i].sqrProximityToPlayer > 1000f) continue;
+        //         points[i].isVisible = Physics.Linecast(points[i].point + Vector3.up * height, playerPosition, layerMask);
+        //     }
+        // }
         
     }
 }

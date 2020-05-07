@@ -70,7 +70,7 @@ public class WeaponFireController : MonoBehaviour
     private int numFiredInBurst;
     private float burstTimestamp;
     private float shotTimestamp;
-    private int currentAmmo;
+    [ReadOnly]public int currentAmmo;
     private int accuracyConeNum = 0;
     private int numConeSegments = 15;
 
@@ -193,7 +193,7 @@ public class WeaponFireController : MonoBehaviour
                 HealthController healthController = r.healthController;
                 if(healthController) {
                     float dist = Mathf.Clamp(Vector3.Distance(hit.collider.ClosestPoint(transform.position), transform.position) / effectiveDistance, 0, 1f);
-                    healthController.recieveDamage(damage / bulletsPerAmmo * damageFalloff.Evaluate(dist));
+                    healthController.recieveDamage(hit.point, damage / bulletsPerAmmo * damageFalloff.Evaluate(dist));
                 }
             }
         }

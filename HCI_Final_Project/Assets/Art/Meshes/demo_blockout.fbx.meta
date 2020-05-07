@@ -1,0 +1,690 @@
+fileFormatVersion: 2
+guid: 3ccd902c809a1044d9ec443a8ce8e214
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cube
+    100002: Cube.001
+    100004: Cube.002
+    100006: Cube.003
+    100008: Cylinder
+    100010: Cylinder.001
+    100012: Cylinder.002
+    100014: //RootNode
+    100016: Mball
+    100018: Mball.001
+    100020: Mball.002
+    100022: Mball.003
+    100024: Mball.004
+    100026: Mball.005
+    100028: Mball.006
+    100030: Mball.007
+    100032: Mball.008
+    100034: Mball.009
+    100036: Mball.010
+    100038: Mball.011
+    100040: Mball.012
+    100042: Mball.013
+    100044: Mball.014
+    100046: Mball.015
+    100048: Mball.016
+    100050: Mball.017
+    100052: Mball.018
+    100054: Mball.019
+    100056: Mball.020
+    100058: Mball.021
+    100060: Mball.022
+    100062: Mball.023
+    100064: Mball.024
+    100066: Mball.025
+    100068: Mball.026
+    100070: Mball.027
+    100072: Mball.028
+    100074: Mball.029
+    100076: Mball.030
+    100078: Mball.031
+    100080: Mball.032
+    100082: Mball.033
+    100084: Mball.034
+    100086: Mball.035
+    100088: Mball.036
+    100090: Mball.037
+    100092: Mball.038
+    100094: Mball.039
+    100096: Mball.040
+    100098: Mball.041
+    100100: Mball.042
+    100102: Mball.043
+    100104: Mball.044
+    100106: Mball.045
+    100108: Mball.046
+    100110: Mball.047
+    100112: Mball.048
+    100114: Mball.049
+    100116: Mball.050
+    100118: Mball.051
+    100120: Mball.052
+    100122: Mball.053
+    100124: Mball.054
+    100126: Mball.055
+    100128: Mball.056
+    100130: Mball.057
+    100132: Mball.058
+    100134: Mball.059
+    100136: Mball.060
+    100138: Mball.061
+    100140: Mball.062
+    100142: Mball.063
+    100144: Mball.064
+    100146: Mball.065
+    100148: Mball.066
+    100150: Mball.067
+    100152: Mball.068
+    100154: Mball.069
+    100156: Mball.070
+    100158: Mball.071
+    100160: Mball.072
+    100162: Mball.073
+    100164: Mball.074
+    100166: Plane
+    100168: Mball.075
+    100170: Mball.076
+    100172: Mball.077
+    100174: Arena Goop Collision
+    100176: Arena Goop Inner
+    100178: Arena Goop Outer
+    100180: Back Building
+    100182: Building Arch 1 Collision
+    100184: Building Arch 1 Inner
+    100186: Building Arch 1 Outer
+    100188: Building Arch 2 Collision
+    100190: Building Arch 2 Inner
+    100192: Building Arch 2 Outer
+    100194: Main Path
+    100196: Mball.079
+    100198: Side Buildings
+    100200: Top Path
+    100202: Tower 1
+    100204: Tower 2
+    100206: Tower 3
+    100208: Grid
+    100210: Grid.001
+    100212: Grid.002
+    100214: Tower 3.001
+    100216: Tower 3.002
+    100218: Tower 3.003
+    100220: Cube.004
+    100222: Cube.005
+    100224: Cube.006
+    100226: Cube.007
+    100228: Cube.008
+    100230: Cube.009
+    100232: Cube.010
+    100234: Cube.011
+    100236: Cube.012
+    100238: Cube.013
+    400000: Cube
+    400002: Cube.001
+    400004: Cube.002
+    400006: Cube.003
+    400008: Cylinder
+    400010: Cylinder.001
+    400012: Cylinder.002
+    400014: //RootNode
+    400016: Mball
+    400018: Mball.001
+    400020: Mball.002
+    400022: Mball.003
+    400024: Mball.004
+    400026: Mball.005
+    400028: Mball.006
+    400030: Mball.007
+    400032: Mball.008
+    400034: Mball.009
+    400036: Mball.010
+    400038: Mball.011
+    400040: Mball.012
+    400042: Mball.013
+    400044: Mball.014
+    400046: Mball.015
+    400048: Mball.016
+    400050: Mball.017
+    400052: Mball.018
+    400054: Mball.019
+    400056: Mball.020
+    400058: Mball.021
+    400060: Mball.022
+    400062: Mball.023
+    400064: Mball.024
+    400066: Mball.025
+    400068: Mball.026
+    400070: Mball.027
+    400072: Mball.028
+    400074: Mball.029
+    400076: Mball.030
+    400078: Mball.031
+    400080: Mball.032
+    400082: Mball.033
+    400084: Mball.034
+    400086: Mball.035
+    400088: Mball.036
+    400090: Mball.037
+    400092: Mball.038
+    400094: Mball.039
+    400096: Mball.040
+    400098: Mball.041
+    400100: Mball.042
+    400102: Mball.043
+    400104: Mball.044
+    400106: Mball.045
+    400108: Mball.046
+    400110: Mball.047
+    400112: Mball.048
+    400114: Mball.049
+    400116: Mball.050
+    400118: Mball.051
+    400120: Mball.052
+    400122: Mball.053
+    400124: Mball.054
+    400126: Mball.055
+    400128: Mball.056
+    400130: Mball.057
+    400132: Mball.058
+    400134: Mball.059
+    400136: Mball.060
+    400138: Mball.061
+    400140: Mball.062
+    400142: Mball.063
+    400144: Mball.064
+    400146: Mball.065
+    400148: Mball.066
+    400150: Mball.067
+    400152: Mball.068
+    400154: Mball.069
+    400156: Mball.070
+    400158: Mball.071
+    400160: Mball.072
+    400162: Mball.073
+    400164: Mball.074
+    400166: Plane
+    400168: Mball.075
+    400170: Mball.076
+    400172: Mball.077
+    400174: Arena Goop Collision
+    400176: Arena Goop Inner
+    400178: Arena Goop Outer
+    400180: Back Building
+    400182: Building Arch 1 Collision
+    400184: Building Arch 1 Inner
+    400186: Building Arch 1 Outer
+    400188: Building Arch 2 Collision
+    400190: Building Arch 2 Inner
+    400192: Building Arch 2 Outer
+    400194: Main Path
+    400196: Mball.079
+    400198: Side Buildings
+    400200: Top Path
+    400202: Tower 1
+    400204: Tower 2
+    400206: Tower 3
+    400208: Grid
+    400210: Grid.001
+    400212: Grid.002
+    400214: Tower 3.001
+    400216: Tower 3.002
+    400218: Tower 3.003
+    400220: Cube.004
+    400222: Cube.005
+    400224: Cube.006
+    400226: Cube.007
+    400228: Cube.008
+    400230: Cube.009
+    400232: Cube.010
+    400234: Cube.011
+    400236: Cube.012
+    400238: Cube.013
+    2100000: No Name
+    2300000: Cube
+    2300002: Cube.001
+    2300004: Cube.002
+    2300006: Cube.003
+    2300008: Cylinder
+    2300010: Cylinder.001
+    2300012: Cylinder.002
+    2300014: Mball
+    2300016: Mball.001
+    2300018: Mball.002
+    2300020: Mball.003
+    2300022: Mball.004
+    2300024: Mball.005
+    2300026: Mball.006
+    2300028: Mball.007
+    2300030: Mball.008
+    2300032: Mball.009
+    2300034: Mball.010
+    2300036: Mball.011
+    2300038: Mball.012
+    2300040: Mball.013
+    2300042: Mball.014
+    2300044: Mball.015
+    2300046: Mball.016
+    2300048: Mball.017
+    2300050: Mball.018
+    2300052: Mball.019
+    2300054: Mball.020
+    2300056: Mball.021
+    2300058: Mball.022
+    2300060: Mball.023
+    2300062: Mball.024
+    2300064: Mball.025
+    2300066: Mball.026
+    2300068: Mball.027
+    2300070: Mball.028
+    2300072: Mball.029
+    2300074: Mball.030
+    2300076: Mball.031
+    2300078: Mball.032
+    2300080: Mball.033
+    2300082: Mball.034
+    2300084: Mball.035
+    2300086: Mball.036
+    2300088: Mball.037
+    2300090: Mball.038
+    2300092: Mball.039
+    2300094: Mball.040
+    2300096: Mball.041
+    2300098: Mball.042
+    2300100: Mball.043
+    2300102: Mball.044
+    2300104: Mball.045
+    2300106: Mball.046
+    2300108: Mball.047
+    2300110: Mball.048
+    2300112: Mball.049
+    2300114: Mball.050
+    2300116: Mball.051
+    2300118: Mball.052
+    2300120: Mball.053
+    2300122: Mball.054
+    2300124: Mball.055
+    2300126: Mball.056
+    2300128: Mball.057
+    2300130: Mball.058
+    2300132: Mball.059
+    2300134: Mball.060
+    2300136: Mball.061
+    2300138: Mball.062
+    2300140: Mball.063
+    2300142: Mball.064
+    2300144: Mball.065
+    2300146: Mball.066
+    2300148: Mball.067
+    2300150: Mball.068
+    2300152: Mball.069
+    2300154: Mball.070
+    2300156: Mball.071
+    2300158: Mball.072
+    2300160: Mball.073
+    2300162: Mball.074
+    2300164: Plane
+    2300166: Mball.075
+    2300168: Mball.076
+    2300170: Mball.077
+    2300172: Arena Goop Collision
+    2300174: Arena Goop Inner
+    2300176: Arena Goop Outer
+    2300178: Back Building
+    2300180: Building Arch 1 Collision
+    2300182: Building Arch 1 Inner
+    2300184: Building Arch 1 Outer
+    2300186: Building Arch 2 Collision
+    2300188: Building Arch 2 Inner
+    2300190: Building Arch 2 Outer
+    2300192: Main Path
+    2300194: Mball.079
+    2300196: Side Buildings
+    2300198: Top Path
+    2300200: Tower 1
+    2300202: Tower 2
+    2300204: Tower 3
+    2300206: Grid
+    2300208: Grid.001
+    2300210: Grid.002
+    2300212: Tower 3.001
+    2300214: Tower 3.002
+    2300216: Tower 3.003
+    2300218: Cube.004
+    2300220: Cube.005
+    2300222: Cube.006
+    2300224: Cube.007
+    2300226: Cube.008
+    2300228: Cube.009
+    2300230: Cube.010
+    2300232: Cube.011
+    2300234: Cube.012
+    2300236: Cube.013
+    3300000: Cube
+    3300002: Cube.001
+    3300004: Cube.002
+    3300006: Cube.003
+    3300008: Cylinder
+    3300010: Cylinder.001
+    3300012: Cylinder.002
+    3300014: Mball
+    3300016: Mball.001
+    3300018: Mball.002
+    3300020: Mball.003
+    3300022: Mball.004
+    3300024: Mball.005
+    3300026: Mball.006
+    3300028: Mball.007
+    3300030: Mball.008
+    3300032: Mball.009
+    3300034: Mball.010
+    3300036: Mball.011
+    3300038: Mball.012
+    3300040: Mball.013
+    3300042: Mball.014
+    3300044: Mball.015
+    3300046: Mball.016
+    3300048: Mball.017
+    3300050: Mball.018
+    3300052: Mball.019
+    3300054: Mball.020
+    3300056: Mball.021
+    3300058: Mball.022
+    3300060: Mball.023
+    3300062: Mball.024
+    3300064: Mball.025
+    3300066: Mball.026
+    3300068: Mball.027
+    3300070: Mball.028
+    3300072: Mball.029
+    3300074: Mball.030
+    3300076: Mball.031
+    3300078: Mball.032
+    3300080: Mball.033
+    3300082: Mball.034
+    3300084: Mball.035
+    3300086: Mball.036
+    3300088: Mball.037
+    3300090: Mball.038
+    3300092: Mball.039
+    3300094: Mball.040
+    3300096: Mball.041
+    3300098: Mball.042
+    3300100: Mball.043
+    3300102: Mball.044
+    3300104: Mball.045
+    3300106: Mball.046
+    3300108: Mball.047
+    3300110: Mball.048
+    3300112: Mball.049
+    3300114: Mball.050
+    3300116: Mball.051
+    3300118: Mball.052
+    3300120: Mball.053
+    3300122: Mball.054
+    3300124: Mball.055
+    3300126: Mball.056
+    3300128: Mball.057
+    3300130: Mball.058
+    3300132: Mball.059
+    3300134: Mball.060
+    3300136: Mball.061
+    3300138: Mball.062
+    3300140: Mball.063
+    3300142: Mball.064
+    3300144: Mball.065
+    3300146: Mball.066
+    3300148: Mball.067
+    3300150: Mball.068
+    3300152: Mball.069
+    3300154: Mball.070
+    3300156: Mball.071
+    3300158: Mball.072
+    3300160: Mball.073
+    3300162: Mball.074
+    3300164: Plane
+    3300166: Mball.075
+    3300168: Mball.076
+    3300170: Mball.077
+    3300172: Arena Goop Collision
+    3300174: Arena Goop Inner
+    3300176: Arena Goop Outer
+    3300178: Back Building
+    3300180: Building Arch 1 Collision
+    3300182: Building Arch 1 Inner
+    3300184: Building Arch 1 Outer
+    3300186: Building Arch 2 Collision
+    3300188: Building Arch 2 Inner
+    3300190: Building Arch 2 Outer
+    3300192: Main Path
+    3300194: Mball.079
+    3300196: Side Buildings
+    3300198: Top Path
+    3300200: Tower 1
+    3300202: Tower 2
+    3300204: Tower 3
+    3300206: Grid
+    3300208: Grid.001
+    3300210: Grid.002
+    3300212: Tower 3.001
+    3300214: Tower 3.002
+    3300216: Tower 3.003
+    3300218: Cube.004
+    3300220: Cube.005
+    3300222: Cube.006
+    3300224: Cube.007
+    3300226: Cube.008
+    3300228: Cube.009
+    3300230: Cube.010
+    3300232: Cube.011
+    3300234: Cube.012
+    3300236: Cube.013
+    4300000: Cube
+    4300002: Cube.002
+    4300004: Mball
+    4300006: Mball.001
+    4300008: Mball.002
+    4300010: Mball.003
+    4300012: Mball.004
+    4300014: Mball.005
+    4300016: Mball.006
+    4300018: Mball.007
+    4300020: Mball.008
+    4300022: Mball.009
+    4300024: Mball.010
+    4300026: Mball.011
+    4300028: Mball.012
+    4300030: Mball.013
+    4300032: Mball.014
+    4300034: Mball.015
+    4300036: Mball.016
+    4300038: Mball.017
+    4300040: Mball.018
+    4300042: Mball.019
+    4300044: Mball.020
+    4300046: Mball.021
+    4300048: Cube.003
+    4300050: Mball.022
+    4300052: Mball.023
+    4300054: Mball.024
+    4300056: Mball.025
+    4300058: Mball.026
+    4300060: Mball.027
+    4300062: Mball.028
+    4300064: Mball.029
+    4300066: Cylinder
+    4300068: Cylinder.001
+    4300070: Cylinder.002
+    4300072: Cube.001
+    4300074: Mball.030
+    4300076: Mball.031
+    4300078: Mball.032
+    4300080: Mball.033
+    4300082: Mball.034
+    4300084: Mball.035
+    4300086: Mball.036
+    4300088: Mball.037
+    4300090: Mball.038
+    4300092: Mball.039
+    4300094: Mball.040
+    4300096: Mball.041
+    4300098: Mball.042
+    4300100: Mball.043
+    4300102: Mball.044
+    4300104: Mball.045
+    4300106: Mball.046
+    4300108: Mball.047
+    4300110: Mball.048
+    4300112: Mball.049
+    4300114: Mball.050
+    4300116: Mball.051
+    4300118: Mball.052
+    4300120: Mball.053
+    4300122: Mball.054
+    4300124: Mball.055
+    4300126: Mball.056
+    4300128: Mball.057
+    4300130: Mball.058
+    4300132: Mball.059
+    4300134: Mball.060
+    4300136: Mball.061
+    4300138: Mball.062
+    4300140: Mball.063
+    4300142: Mball.064
+    4300144: Mball.065
+    4300146: Mball.066
+    4300148: Mball.067
+    4300150: Mball.068
+    4300152: Mball.069
+    4300154: Mball.070
+    4300156: Mball.071
+    4300158: Mball.072
+    4300160: Mball.073
+    4300162: Mball.074
+    4300164: Plane
+    4300166: Mball.075
+    4300168: Mball.076
+    4300170: Mball.077
+    4300172: Side Buildings
+    4300174: Back Building
+    4300176: Main Path
+    4300178: Tower 1
+    4300180: Tower 2
+    4300182: Tower 3
+    4300184: Top Path
+    4300186: Mball.079
+    4300188: Arena Goop Collision
+    4300190: Building Arch 1 Collision
+    4300192: Building Arch 2 Collision
+    4300194: Arena Goop Inner
+    4300196: Arena Goop Outer
+    4300198: Building Arch 1 Inner
+    4300200: Building Arch 1 Outer
+    4300202: Building Arch 2 Inner
+    4300204: Building Arch 2 Outer
+    4300206: Tower 3.001
+    4300208: Grid
+    4300210: Tower 3.002
+    4300212: Grid.001
+    4300214: Tower 3.003
+    4300216: Grid.002
+    4300218: Cube.004
+    4300220: Cube.005
+    4300222: Cube.006
+    4300224: Cube.007
+    4300226: Cube.008
+    4300228: Cube.009
+    4300230: Cube.010
+    4300232: Cube.011
+    4300234: Cube.012
+    4300236: Cube.013
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 3
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
