@@ -116,4 +116,8 @@ public class WeaponSwapController : MonoBehaviour
             }
         }
     }
+
+    public WeaponFireController getCurrentWeapon() {
+        return weapons[currentWeaponIndex].GetComponent<WeaponFireController>();
+    }
 }

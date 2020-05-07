@@ -17,7 +17,7 @@ public class DamageOverTimeStatus : Status
     public override void EvaluateStatus(StatusManager manager) {
         if(tickTimestamp < Time.time) {
             tickTimestamp = Time.time + (1f / tickPerSecond);
-            manager.healthController.recieveDamage(damagePerTick);
+            manager.healthController.recieveDamage(manager.transform.position, damagePerTick);
         }
     }
 
