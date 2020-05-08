@@ -111,6 +111,12 @@ ModelImporter:
     100210: Handle_end
     100212: Trigger 1
     100214: Trigger_end 1
+    100216: Armature.001
+    100218: Bone
+    100220: Bone_end
+    100222: Cylinder
+    100224: Pistol.002
+    100226: Pistol.001
     400000: Bottom
     400002: //RootNode
     400004: Top
@@ -219,28 +225,42 @@ ModelImporter:
     400210: Handle_end
     400212: Trigger 1
     400214: Trigger_end 1
+    400216: Armature.001
+    400218: Bone
+    400220: Bone_end
+    400222: Cylinder
+    400224: Pistol.002
+    400226: Pistol.001
     2000000: Camera
     2100000: No Name
     2100002: Material.002
     2100004: Material.001
     2100006: Material.003
     2100008: shotgun_material
+    2100010: Material
     2300000: Bottom
     2300002: Top
     2300004: Trigger
     2300006: caucasian_male_1:Body
     2300008: Pistol
+    2300010: Cylinder
+    2300012: Pistol.001
     3300000: Bottom
     3300002: Top
     3300004: Trigger
     3300006: caucasian_male_1:Body
     3300008: Pistol
+    3300010: Cylinder
+    3300012: Pistol.001
     4300000: Trigger
     4300002: Bottom
     4300004: Top
     4300006: caucasian_male_1:Body
     4300008: Pistol
     4300010: Cube
+    4300012: Pistol.002
+    4300014: Cylinder
+    4300016: Pistol.001
     7400000: hands_pistol_whole_anim
     7400002: pistol_whole_anim
     7400004: hands_pistol_intro
@@ -264,6 +284,7 @@ ModelImporter:
     13700000: caucasian_male_1:Body
     13700002: Pistol
     13700004: Cube
+    13700006: Pistol.002
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:

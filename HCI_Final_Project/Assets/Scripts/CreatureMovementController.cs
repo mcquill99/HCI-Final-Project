@@ -20,6 +20,7 @@ public class CreatureMovementController : MovementController
     protected override void LateUpdate() {
         this.velocity = animator.velocity;
         // controller.speed = movementSpeed * this.speedMultiplier;
+        animator.SetFloat("moveSpeedMult", movementSpeed);
         
         base.LateUpdate();
     }
