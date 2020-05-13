@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthController: {fileID: 0}
-  maxHealth: 50
+  maxHealth: 60
   currentHealth: 0
   onDeathEvent:
     m_PersistentCalls:
