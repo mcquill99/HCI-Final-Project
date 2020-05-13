@@ -166,7 +166,7 @@ public class AIGridGenerator : MonoBehaviour
     }
 
 
-    void Start() {
+    void Awake() {
         //generateGrid();
         deserializeFromList();
     }

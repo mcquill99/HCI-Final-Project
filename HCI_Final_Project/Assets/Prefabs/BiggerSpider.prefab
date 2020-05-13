@@ -1032,6 +1032,7 @@ GameObject:
   - component: {fileID: 5607353028650159638}
   - component: {fileID: 2012201446918467268}
   - component: {fileID: 5439847826651551772}
+  - component: {fileID: 114821338885374560}
   m_Layer: 13
   m_Name: BiggerSpider
   m_TagString: Untagged
@@ -1248,6 +1249,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 2480699184115679132}
   ikInfluence: 1
+--- !u!114 &114821338885374560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480699184644375368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730b8c9baff5d0a4b899ba0b6a3cff05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parts:
+  - {fileID: 7298555045209599100}
+  - {fileID: 746794548359758865}
+  - {fileID: 5699088698098362255}
+  - {fileID: 260372470815307381}
+  - {fileID: 8369619968142203222}
+  - {fileID: 869860183466116191}
+  - {fileID: 3523940287278630532}
+  - {fileID: 2480699183164452453}
+  - {fileID: 2480699185143993984}
+  aggressiveColor: {fileID: 2100000, guid: a5e15dca8705c4e4b98e5ba93aa0e941, type: 2}
+  patrollingColor: {fileID: 2100000, guid: 29a140a86d6ef354eb0e072915fee097, type: 2}
+  stateMachine: {fileID: 4752107373988100763}
 --- !u!1 &2480699185143993989
 GameObject:
   m_ObjectHideFlags: 0

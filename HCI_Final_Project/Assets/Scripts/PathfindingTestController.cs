@@ -17,10 +17,10 @@ public class PathfindingTestController : MonoBehaviour
 
     void Update()
     {
-        if(Vector3.SqrMagnitude(transform.position - target.transform.position) < 9) {
-            agent.SetDestination(transform.position);
-        } else {
-            agent.SetDestination(target.transform.position);
-        }
+        // if(Vector3.SqrMagnitude(transform.position - target.transform.position) < 9) {
+        //     agent.SetDestination(transform.position);
+        // } else {
+        //     agent.SetDestination(target.transform.position);
+        // }
     }
 }
