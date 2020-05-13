@@ -21,6 +21,9 @@ public class WeaponSwapController : MonoBehaviour
     [Tooltip("Reference to weapons holder to create list of weapons")]
     [Required][BoxGroup("References")] public Transform weaponsHolder;
 
+    [Tooltip("Reference to sound to be played when weapon is swapped")]
+    [BoxGroup("References")] public AudioSource swapSound;
+
     [Space]
 
     [Tooltip("Value to set timescale to when choosing weapon")]
@@ -108,6 +111,7 @@ public class WeaponSwapController : MonoBehaviour
     public void chooseWeapon(int weaponNum) {
         //choosing can be done by clicking or pressing enter, so close the menu
         disableWeaponMenu();
+        swapSound.Play();
         //print("CHOSE WEAPON : " + weaponNum);
         //if the chosen weapon isn't the already equiped one, equip it
         if(weaponNum != currentWeaponIndex ) {

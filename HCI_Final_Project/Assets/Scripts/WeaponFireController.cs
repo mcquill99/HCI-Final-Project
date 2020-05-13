@@ -19,6 +19,12 @@ public class WeaponFireController : MonoBehaviour
     
     [Tooltip("Reference to weapon controller. Used to link delegates")]
     [BoxGroup("References")] public WeaponController weaponController;
+
+    [Tooltip("Reference to sound to be played when weapon is fired")]
+    [BoxGroup("References")] public AudioSource fireSound;
+    [Tooltip("Reference to sound to be played when projectile explodes")]
+    [BoxGroup("References")] public AudioSource projectileSound;
+
     [Space]
     
     [Tooltip("Damage of weapon")]
@@ -152,6 +158,10 @@ public class WeaponFireController : MonoBehaviour
     }
 
     public void shootWeapon() {
+        if(!Input.GetKey(KeyCode.Q)){
+            fireSound.pitch = Random.Range(0.85f, 1.15f);
+            fireSound.Play();
+        }
         if(deliveryType == DeliveryType.Hitscan) {
             for(int i = 0; i < bulletsPerAmmo; i++) {
                 shootHitscan();    
@@ -209,7 +219,7 @@ public class WeaponFireController : MonoBehaviour
             projectileRotation = Quaternion.LookRotation(aimingTransform.forward * 100000f - muzzle.transform.position, Vector3.up);
         }
         ProjectileController projectileController = ((GameObject)Instantiate(projectilePrefab, muzzle.transform.position, projectileRotation)).GetComponent<ProjectileController>();
-        projectileController.InitializeProjectile(damage, weaponController.movementController.getVelocity(), layers, weaponController.movementController.gameObject);
+        projectileController.InitializeProjectile(damage, weaponController.movementController.getVelocity(), layers, weaponController.movementController.gameObject, projectileSound);
     }
 
 }
