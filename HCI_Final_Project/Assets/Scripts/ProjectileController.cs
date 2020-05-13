@@ -25,6 +25,9 @@ public class ProjectileController : MonoBehaviour
 
     [Tooltip("Prefab to instantiate on explode")]
     [BoxGroup("Settings")] public GameObject explosionPrefab;
+    [Tooltip("Audio to play when projectile goes off")]
+    [BoxGroup("Settings")] public AudioSource projectileSound;
+    
 
     [Tooltip("UnityEvent called when rocket explodes. Delegate onImpactEvent also executed")]
     [BoxGroup("Events")] public UnityEvent onImpactEvent;
@@ -33,12 +36,14 @@ public class ProjectileController : MonoBehaviour
     private Collider collider;
     private float damage;
     private float selfDestructTimeStamp;
+    public AudioSource explosionSound;
     
-    public void InitializeProjectile(float damage, Vector3 inheritVelocity, LayerMask layers, GameObject creatureRoot) {
+    public void InitializeProjectile(float damage, Vector3 inheritVelocity, LayerMask layers, GameObject creatureRoot, AudioSource explosionSound) {
         this.damage = damage;
         this.layers = layers;
         rigidbody = GetComponent<Rigidbody>(); 
         collider = GetComponent<Collider>();
+        this.explosionSound = explosionSound;
 
         Collider[] cols = creatureRoot.GetComponentsInChildren<Collider>();
         foreach(Collider c in cols) {
@@ -76,7 +81,7 @@ public class ProjectileController : MonoBehaviour
 
         ExplosionController controller = ((GameObject)Instantiate(explosionPrefab, transform.position, transform.rotation)).GetComponent<ExplosionController>();
 
-        controller.initExplosion(explosionRadius, damage);
+        controller.initExplosion(explosionRadius, damage, explosionSound);
 
         if(destroyOnImpact) {
             Destroy(gameObject);

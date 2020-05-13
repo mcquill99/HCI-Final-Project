@@ -8,6 +8,13 @@ namespace VHS
     public class FirstPersonController : MonoBehaviour
     {
         #region Variables
+
+            [Tooltip("Reference to sound to be played when player jumps")]
+            [BoxGroup("References")] public AudioSource jumpSound;
+            [Tooltip("Reference to sound to be played when player slides")]
+            [BoxGroup("References")] public AudioSource slideSound;
+            [Tooltip("Reference to sound to be played when player walks")]
+            [BoxGroup("References")] public AudioSource walkSound;
             #region Public      
                 #region Data
                     [Space]
@@ -393,8 +400,14 @@ namespace VHS
                     m_finalMoveVector.x = _finalVector.x ;
                     m_finalMoveVector.z = _finalVector.z ;
 
-                    if(m_characterController.isGrounded) // Thanks to this check we are not applying extra y velocity when in air so jump will be consistent
+                    if(m_characterController.isGrounded){ // Thanks to this check we are not applying extra y velocity when in air so jump will be consistent
                         m_finalMoveVector.y += _finalVector.y ; //so this makes our player go in forward dir using slope normal but when jumping this is making it go higher so this is weird
+                        if(m_characterController.velocity.magnitude > 2f && !walkSound.isPlaying){
+                            walkSound.pitch = Random.Range(0.85f, 1.15f);
+                            walkSound.Play();
+                        }
+                    } 
+                        
                 }
             #endregion
 
@@ -416,6 +429,11 @@ namespace VHS
 
                     if(movementInputData.CrouchClicked && m_isGrounded)
                         InvokeCrouchRoutine();
+
+                    if(movementInputData.IsSliding == false){
+                        slideSound.Stop();
+                    }
+
                 }
 
                 void InvokeCrouchRoutine(bool bypassAnim = false)
@@ -435,6 +453,8 @@ namespace VHS
                         if(!(requireSprintToSlide && !(movementInputData.IsRunning && CanRun())) && 
                         m_inputVector.y > 0 &&
                         Mathf.Abs(Vector2.Dot(flattenedMoveDir.normalized, flattenedRightDir)) < 0.3f) {
+                            slideSound.pitch = Random.Range(0.85f, 1.15f);
+                            slideSound.Play();
                             movementInputData.IsSliding = true;
                             m_cameraController.isLockedCamera = true;
                             m_slideTimestamp = Time.time + slideDuration;
@@ -510,7 +530,6 @@ namespace VHS
 
                 void HandleSlide() {
 
-                    
                     //Used for easing curves
                     m_slideProgress = 1 - (Mathf.Clamp(m_slideTimestamp - Time.time, 0, slideDuration) / slideDuration);
 
@@ -519,6 +538,7 @@ namespace VHS
 
                     //if on very steep slope, initiate slide
                     if(_hitGround && m_hasJumpedCooldown < Time.time) {
+                    
                         float angle = Vector3.Angle(m_hitInfo.normal, Vector3.up);
                         if(angle > steepSlopeAngles.x && angle < steepSlopeAngles.y) {
                             //print("FORCED SLIDING");
@@ -707,6 +727,8 @@ namespace VHS
                         m_isGrounded = false;
                     } else if(movementInputData.JumpClicked && !movementInputData.IsCrouching)
                     {
+                        jumpSound.pitch = Random.Range(0.85f, 1.15f);
+                        jumpSound.Play();
                         //m_finalMoveVector.y += jumpSpeed /* m_currentSpeed */; // we are adding because ex. when we are going on slope we want to keep Y value not overwriting it
                         m_finalMoveVector.y = jumpSpeed /* m_currentSpeed */; // turns out that when adding to Y it is too much and it doesn't feel correct because jumping on slope is much faster and higher;
                     

@@ -13,6 +13,9 @@ public class ExplosiveBarrelController : MonoBehaviour
     [Tooltip("Damage of explosion. Effected by radius and explosion damage falloff")]
     [BoxGroup("Settings")]public float explosionDamage;
 
+    [Tooltip("Explosion Sound")]
+    [BoxGroup("Settings")]public AudioSource explosionSound;
+
     private HealthControllerReferencer healthControllerReferencer;
     private HealthController healthController;
     private bool hasExploded = false;
@@ -31,7 +34,7 @@ public class ExplosiveBarrelController : MonoBehaviour
             hasExploded = true;
             ExplosionController controller = ((GameObject)Instantiate(explosionPrefab, transform.position, transform.rotation)).GetComponent<ExplosionController>();
 
-            controller.initExplosion(explosionRadius, explosionDamage);
+            controller.initExplosion(explosionRadius, explosionDamage, explosionSound);
             // DamageIndicatorSystem.CreateIndicator(this.transform, explosionDamage);
 
         }

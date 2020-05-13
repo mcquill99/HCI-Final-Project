@@ -16,6 +16,9 @@ public class RMF_RadialMenu : MonoBehaviour {
     //public RectTransform baseCircleRT;
     //public Image selectionFollowerImage;
 
+    [Tooltip("Reference to sound to be played when weapon is hovered")]
+     public AudioSource hoverSound;
+
     [Tooltip("Adjusts the radial menu for use with a gamepad or joystick. You might need to edit this script if you're not using the default horizontal and vertical input axes.")]
     public bool useGamepad = false;
 
@@ -169,6 +172,7 @@ public class RMF_RadialMenu : MonoBehaviour {
           if (elements[i].active == false) {
 
             elements[i].highlightThisElement(pointer); //Select this one
+            hoverSound.Play();
 
             if (previousActiveIndex != i) 
                 elements[previousActiveIndex].unHighlightThisElement(pointer); //Deselect the last one.
