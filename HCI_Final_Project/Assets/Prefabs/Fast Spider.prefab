@@ -2157,7 +2157,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3354200167256101144}
-  m_LocalRotation: {x: -0.47932693, y: 0, z: 0, w: 0.87763643}
+  m_LocalRotation: {x: -0.4793271, y: 0, z: 0, w: 0.8776363}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2190,7 +2190,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3604175096386490030}
-  m_LocalRotation: {x: 0.8413481, y: 0, z: 0, w: 0.5404936}
+  m_LocalRotation: {x: 0.84134823, y: 0, z: 0, w: 0.5404934}
   m_LocalPosition: {x: -0.0000009685755, y: -0.000000014952617, z: 0.4999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3098,7 +3098,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7336675332023615862}
-  m_LocalRotation: {x: -0.75331056, y: -0.015890187, z: 0.014438096, w: 0.6573144}
+  m_LocalRotation: {x: -0.75331056, y: -0.015890166, z: 0.014438324, w: 0.6573144}
   m_LocalPosition: {x: -0.000000044703484, y: 0, z: 0.49999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3130,7 +3130,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7438515863150896854}
-  m_LocalRotation: {x: 0.30223024, y: -0.4509105, z: 0.16865547, w: 0.8227345}
+  m_LocalRotation: {x: 0.3022303, y: -0.45091042, z: 0.16865526, w: 0.8227345}
   m_LocalPosition: {x: -0.368, y: 0.0062281336, z: 0.278}
   m_LocalScale: {x: 1.5571244, y: 1.5571234, z: 1.557124}
   m_Children:
@@ -3251,9 +3251,9 @@ GameObject:
   - component: {fileID: 4270061556495105401}
   - component: {fileID: 7031612489868198799}
   - component: {fileID: 816701654}
-  - component: {fileID: 481719237749215152}
   - component: {fileID: 5805982459010936674}
   - component: {fileID: 786160058}
+  - component: {fileID: 2455250113723172570}
   m_Layer: 13
   m_Name: Fast Spider
   m_TagString: Untagged
@@ -3377,7 +3377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88765c972fd67b48bbde18477c32845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 12
+  movementSpeed: 3
 --- !u!114 &4270061556495105401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3427,22 +3427,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!208 &481719237749215152
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7571410813885383406}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.75, y: 0.00001, z: 0.75}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: -0.5, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!114 &5805982459010936674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3470,6 +3454,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 7571410814430887482}
   ikInfluence: 1
+--- !u!114 &2455250113723172570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571410813885383406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730b8c9baff5d0a4b899ba0b6a3cff05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parts:
+  - {fileID: 3330295247866342874}
+  - {fileID: 317787718933046825}
+  - {fileID: 4693627576315954615}
+  - {fileID: 5252111577160120275}
+  - {fileID: 4564650846532737264}
+  - {fileID: 8906349590405089058}
+  - {fileID: 5146600609644135929}
+  - {fileID: 7571410813320107814}
+  - {fileID: 7571410815098204099}
+  aggressiveColor: {fileID: 2100000, guid: bb0f7d4b35f93e747906d65a29b5776f, type: 2}
+  patrollingColor: {fileID: 2100000, guid: ddfa7ea4db0a3ab40a9a20dd762dc41a, type: 2}
+  stateMachine: {fileID: 760220740904024893}
 --- !u!1 &7571410814430887485
 GameObject:
   m_ObjectHideFlags: 0
@@ -3483,6 +3492,7 @@ GameObject:
   - component: {fileID: 7571410814430887480}
   - component: {fileID: 7571410814430887483}
   - component: {fileID: 376515872}
+  - component: {fileID: 5256569289044529632}
   m_Layer: 13
   m_Name: Body
   m_TagString: Untagged
@@ -3584,6 +3594,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthController: {fileID: 1995805129}
+--- !u!208 &5256569289044529632
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571410814430887485}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.12, y: 0.00001, z: 1.12}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7571410815098204108
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,7 +61,7 @@ public class AIAnimationController : MonoBehaviour
 
     }
 
-        IEnumerator Parabola (NavMeshAgent agent, float height, float duration) {
+    IEnumerator Parabola (NavMeshAgent agent, float height, float duration) {
         OffMeshLinkData data = agent.currentOffMeshLinkData;
         Vector3 startPos = agent.transform.position;
         Vector3 endPos = data.endPos + Vector3.up*agent.baseOffset;

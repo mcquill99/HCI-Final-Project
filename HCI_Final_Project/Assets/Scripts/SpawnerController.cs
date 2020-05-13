@@ -20,6 +20,7 @@ public class SpawnerController : MonoBehaviour
 
     [Tooltip("Time in seconds to wait between creature spawns")]
     [BoxGroup("Settings")]public float betweenSpawnDuration;
+    [BoxGroup("Settings")]public bool aggressiveOnSpawn = true;
 
 
     [Tooltip("UnityEvent called when creature spawns. Passes HealthController as parameter. Delegate onSpawnCreatureDelegate also executed")]
@@ -68,6 +69,17 @@ public class SpawnerController : MonoBehaviour
         foreach(CreatureEvent e in events) {
             e.initEvent(healthControllerReferencer.healthController);
         }
+
+        if(aggressiveOnSpawn) {
+            AIStateMachine sm = healthControllerReferencer.GetComponentInChildren<AIStateMachine>();
+            sm.setCombatState(AICombatState.Aggressive); 
+            sm.GetComponent<Animator>().SetTrigger("aggravated");
+        }
+        // } else {
+        //     AIStateMachine sm = healthControllerReferencer.GetComponentInChildren<AIStateMachine>();
+        //     sm.setCombatState(AICombatState.Patrolling); 
+        // }
+        
 
         onSpawnCreatureEvent.Invoke(healthControllerReferencer.healthController);
         if(onSpawnCreatureDelegate != null) {
