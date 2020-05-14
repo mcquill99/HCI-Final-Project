@@ -18,6 +18,8 @@ public class DropDropperController : MonoBehaviour
         float chance = Random.Range(0f, 1f);
         if(chance < chanceToDrop) {
             Instantiate(healthDrop, transform.position, Quaternion.identity);
+        } else if(chance < chanceToDrop * 2) {
+            Instantiate(ammoDrop, transform.position, Quaternion.identity);
         }
     }
 }
