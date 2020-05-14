@@ -39,6 +39,9 @@ public class DamageIndicatorSystem : MonoBehaviour
     }
     public void AddDamageIndicator(Vector3 target, float damage)
     {
+        if(damage <= 0)
+            return;
+
         if(Indicators.ContainsKey(target))
         {
             Indicators[target].Restart();
