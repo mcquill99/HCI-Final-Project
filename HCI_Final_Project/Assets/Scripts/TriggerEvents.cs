@@ -21,6 +21,9 @@ public class TriggerEvents : MonoBehaviour
     [BoxGroup("Events")]public VoidDelegate onTriggerExitDelegate;
 
     void OnTriggerEnter(Collider collider) {
+        if(!this.enabled){
+            return;
+        }
         if((layerMask & (1 << collider.gameObject.layer)) != 0) {
             onTriggerEnterEvent.Invoke();
             if(onTriggerEnterDelegate != null) {
@@ -30,6 +33,9 @@ public class TriggerEvents : MonoBehaviour
     }
 
     void OnTriggerStay(Collider collider) {
+        if(!this.enabled){
+            return;
+        }
         if((layerMask & (1 << collider.gameObject.layer)) != 0) {
             onTriggerStayEvent.Invoke();
             if(onTriggerStayDelegate != null) {
@@ -39,6 +45,9 @@ public class TriggerEvents : MonoBehaviour
     }
 
     void OnTriggerExit(Collider collider) {
+        if(!this.enabled){
+            return;
+        }
         if((layerMask & (1 << collider.gameObject.layer)) != 0) {
             onTriggerExitEvent.Invoke();
             if(onTriggerExitDelegate != null) {
