@@ -18,12 +18,13 @@ public class MultiConditionEvent : MonoBehaviour
         conditionListSize = conditionList.Count;
     }
 
-    void setCondition(int index, bool isMet){
+    public void flipCondition(int index){
         if(index < 0 || index > conditionListSize){
             Debug.LogWarning("Hey, you provided an invalid condition index: " + index + ". Allowable indexes are between 0 and " + conditionListSize + ".");
             return;
         }
-        conditionList[index].setTo(isMet);
+        conditionList[index].setTo(true);
+        checkIfAllMet();
     }
 
     void checkIfAllMet(){
@@ -33,10 +34,12 @@ public class MultiConditionEvent : MonoBehaviour
             }
         }
         this.onConditionsMet();
+        this.enabled = false;
     }
 
     public void onConditionsMet(){
         onConditionsMetEvent.Invoke();
+        Debug.Log("ALL CONDITIONS MET");
     }
     // Update is called once per frame
     void Update()
