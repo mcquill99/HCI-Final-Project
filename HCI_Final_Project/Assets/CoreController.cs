@@ -15,14 +15,19 @@ public class CoreController : MonoBehaviour
     public Vector2 lowerlidAngles;
     private float lidTimestamp = -1000f;
     private bool coreEnabled = false;
+    public GameObject coreSound;
     void Start()
     {
-        // startCore();
+        startCore();
+        if(coreSound != null){
+            print(coreSound.GetComponent<AudioSource>());
+            coreSound.transform.position = transform.position;
+        }
         if(player == null) {
             //TODO: not this
             player = GameObject.Find("Player").transform;
         }
-        health.invincible = true;
+        //health.invincible = true;
     }
 
     void Update()
@@ -35,6 +40,12 @@ public class CoreController : MonoBehaviour
         float lowerValue = Mathf.Lerp(lowerlidAngles.x, lowerlidAngles.y, progress);
         upperLid.localEulerAngles = new Vector3(0, 90, upperValue);
         lowerLid.localEulerAngles = new Vector3(0, 90, lowerValue);
+        if(coreSound != null && !coreSound.GetComponent<AudioSource>().isPlaying && health.getCurrentHealth() > 0){
+            coreSound.GetComponent<AudioSource>().Play();
+        }
+        if(health.getCurrentHealth() <= 0 && coreSound != null){
+            coreSound.GetComponent<AudioSource>().Stop();
+        }
 
     }
 
