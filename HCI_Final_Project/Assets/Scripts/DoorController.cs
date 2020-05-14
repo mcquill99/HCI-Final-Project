@@ -21,6 +21,8 @@ public class DoorController : MonoBehaviour
     [BoxGroup("Settings")]public bool isAutoDoor;
     [BoxGroup("Settings")][ShowIf("isAutoDoor")]public TriggerEvents autoDoorTrigger;
 
+    [Tooltip("Sound to play when door animates")]
+    [BoxGroup("Settings")]public AudioSource doorSound;
 
     [Space]
     [Tooltip("UnityEvent called when door is opened or closed. Passes parameter containing status of door. Delegate onDoorChangedDelegate also executed")]
@@ -81,6 +83,9 @@ public class DoorController : MonoBehaviour
     }
 
     public void openDoor() {
+        if(doorSound != null){
+            AudioSource.PlayClipAtPoint(doorSound.clip, transform.position);
+        }
         setDoorState(true);
     }
 
