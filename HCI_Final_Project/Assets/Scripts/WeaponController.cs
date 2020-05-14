@@ -14,6 +14,7 @@ public class WeaponController : MonoBehaviour
 
     [Tooltip("Reference to equiped transform for animation. Uses position and rotation")]
     [Required][BoxGroup("References")] public Transform equipedPoint;
+
     
     //TODO: Fix this to not be specific to player
     [Tooltip("Reference to Movement Controller. Used for tracking velocity")]

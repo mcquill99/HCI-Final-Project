@@ -33,6 +33,9 @@ public class NumCreaturesDeadEvent : MonoBehaviour
     }
 
     private void onCreatureDeath() {
+        if(!this.enabled){
+            return;
+        }
         numCreaturesDead++;
         if(singleExecution && hasExecuted) {
             return;
@@ -44,5 +47,6 @@ public class NumCreaturesDeadEvent : MonoBehaviour
                 onNumCreaturesDeadDelegate();
             }
         }
+
     }
 }

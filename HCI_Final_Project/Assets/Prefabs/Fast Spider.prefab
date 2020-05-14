@@ -3333,7 +3333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthController: {fileID: 0}
-  maxHealth: 25
+  maxHealth: 30
   invincible: 0
   currentHealth: 0
   onDeathEvent:
