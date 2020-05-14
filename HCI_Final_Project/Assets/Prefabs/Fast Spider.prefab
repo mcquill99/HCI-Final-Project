@@ -3255,6 +3255,7 @@ GameObject:
   - component: {fileID: 786160058}
   - component: {fileID: 2455250113723172570}
   - component: {fileID: 5934009588214313882}
+  - component: {fileID: 4533047419861599642}
   m_Layer: 13
   m_Name: Fast Spider
   m_TagString: Untagged
@@ -3317,6 +3318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 7571410814430887482}
+  walkSound: {fileID: 0}
   offsetHeight: 0.25
   moveSpeed: 1.5
   ikInfluence: 1
@@ -3442,6 +3444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 760220740904024893}
+  leapSound: {fileID: 0}
 --- !u!114 &786160058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3494,6 +3497,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 5
+--- !u!114 &4533047419861599642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571410813885383406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8851aeff2d24044b23b3c1d32b8edf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoDrop: {fileID: 6503513517947797157, guid: dccac3e37d1487843b319ce456998a01,
+    type: 3}
+  healthDrop: {fileID: 2260166773988386369, guid: 6c5b938aa2a905a4aba70f4e9fa26585,
+    type: 3}
+  chanceToDrop: 0.15
 --- !u!1 &7571410814430887485
 GameObject:
   m_ObjectHideFlags: 0

@@ -1034,6 +1034,7 @@ GameObject:
   - component: {fileID: 5439847826651551772}
   - component: {fileID: 114821338885374560}
   - component: {fileID: 2347356952025728472}
+  - component: {fileID: 1154195289708464187}
   m_Layer: 13
   m_Name: BiggerSpider
   m_TagString: Untagged
@@ -1096,6 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 2480699184115679132}
+  walkSound: {fileID: 0}
   offsetHeight: 0.5
   moveSpeed: 1.5
   ikInfluence: 1
@@ -1237,6 +1239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 4752107373988100763}
+  leapSound: {fileID: 0}
 --- !u!114 &5439847826651551772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1289,6 +1292,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 15
+--- !u!114 &1154195289708464187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480699184644375368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8851aeff2d24044b23b3c1d32b8edf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoDrop: {fileID: 6503513517947797157, guid: dccac3e37d1487843b319ce456998a01,
+    type: 3}
+  healthDrop: {fileID: 2260166773988386369, guid: 6c5b938aa2a905a4aba70f4e9fa26585,
+    type: 3}
+  chanceToDrop: 0.15
 --- !u!1 &2480699185143993989
 GameObject:
   m_ObjectHideFlags: 0
