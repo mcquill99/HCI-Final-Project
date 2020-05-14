@@ -1033,6 +1033,7 @@ GameObject:
   - component: {fileID: 2012201446918467268}
   - component: {fileID: 5439847826651551772}
   - component: {fileID: 114821338885374560}
+  - component: {fileID: 2347356952025728472}
   m_Layer: 13
   m_Name: BiggerSpider
   m_TagString: Untagged
@@ -1112,6 +1113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthController: {fileID: 0}
   maxHealth: 50
+  invincible: 0
   currentHealth: 0
   onDeathEvent:
     m_PersistentCalls:
@@ -1274,6 +1276,19 @@ MonoBehaviour:
   aggressiveColor: {fileID: 2100000, guid: a5e15dca8705c4e4b98e5ba93aa0e941, type: 2}
   patrollingColor: {fileID: 2100000, guid: 29a140a86d6ef354eb0e072915fee097, type: 2}
   stateMachine: {fileID: 4752107373988100763}
+--- !u!114 &2347356952025728472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480699184644375368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669a424523b2cf44bb401fc6b47a6f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 15
 --- !u!1 &2480699185143993989
 GameObject:
   m_ObjectHideFlags: 0

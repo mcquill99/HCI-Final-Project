@@ -3254,6 +3254,7 @@ GameObject:
   - component: {fileID: 5805982459010936674}
   - component: {fileID: 786160058}
   - component: {fileID: 2455250113723172570}
+  - component: {fileID: 5934009588214313882}
   m_Layer: 13
   m_Name: Fast Spider
   m_TagString: Untagged
@@ -3333,6 +3334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthController: {fileID: 0}
   maxHealth: 25
+  invincible: 0
   currentHealth: 0
   onDeathEvent:
     m_PersistentCalls:
@@ -3479,6 +3481,19 @@ MonoBehaviour:
   aggressiveColor: {fileID: 2100000, guid: bb0f7d4b35f93e747906d65a29b5776f, type: 2}
   patrollingColor: {fileID: 2100000, guid: ddfa7ea4db0a3ab40a9a20dd762dc41a, type: 2}
   stateMachine: {fileID: 760220740904024893}
+--- !u!114 &5934009588214313882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571410813885383406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669a424523b2cf44bb401fc6b47a6f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 5
 --- !u!1 &7571410814430887485
 GameObject:
   m_ObjectHideFlags: 0
