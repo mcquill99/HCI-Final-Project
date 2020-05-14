@@ -7,6 +7,8 @@ public class HealthController : HealthControllerReferencer
 {
     [Tooltip("Maximum health")]
     [BoxGroup("Settings")]public float maxHealth;
+    [BoxGroup("Settings")]public bool invincible = false;
+
     
     [Tooltip("Current health")]
     [ReadOnly]public float currentHealth;
@@ -35,7 +37,10 @@ public class HealthController : HealthControllerReferencer
     }
 
     public void recieveDamage(Vector3 position, float amount) {
-        currentHealth -= amount;
+        if(!invincible)
+            currentHealth -= amount;
+        else 
+            amount = 0;
 
         onRecieveDamageEvent.Invoke(amount);
         if(onRecieveDamageDelegate != null) {
