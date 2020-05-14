@@ -55845,6 +55845,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: GAME_WORLD
       objectReference: {fileID: 0}
+    - target: {fileID: 9171291663355099820, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: inaccuracy
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171291663355099820, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: bulletsPerAmmo
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171291663355099820, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: damage
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171291663355099820, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171291663443612129, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: fireRate
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171291663443612129, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: fireMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171291663443612129, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 9171291663636144074, guid: 99850e81d416a764d95519aaaa924aad,
         type: 3}
       propertyPath: m_NavMeshData
@@ -55946,6 +55981,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 9171291664020147864, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: inaccuracy
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171291664020147864, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 9171291664658352485, guid: 99850e81d416a764d95519aaaa924aad,
         type: 3}
       propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.size
@@ -56005,6 +56050,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171291664752452821, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: damage
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171291664752452821, guid: 99850e81d416a764d95519aaaa924aad,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 9171291664781686258, guid: 99850e81d416a764d95519aaaa924aad,
         type: 3}

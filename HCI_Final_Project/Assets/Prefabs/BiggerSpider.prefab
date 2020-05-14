@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88765c972fd67b48bbde18477c32845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
+  movementSpeed: 1
 --- !u!114 &8087469436100279519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,7 +1308,7 @@ MonoBehaviour:
     type: 3}
   healthDrop: {fileID: 2260166773988386369, guid: 6c5b938aa2a905a4aba70f4e9fa26585,
     type: 3}
-  chanceToDrop: 0.15
+  chanceToDrop: 0.3
 --- !u!1 &2480699185143993989
 GameObject:
   m_ObjectHideFlags: 0
