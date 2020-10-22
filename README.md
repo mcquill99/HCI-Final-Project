@@ -23,10 +23,21 @@ Our game is based around two core concepts.
 ### Aesthetic
 
 For our aesthetic, we wanted to create a mixture of organic and industrial structures. Something that would contrast between geometrical structures and organic arachnid enemies to create a dystopian, "overrun" feeling
-![Art Asset 1](https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/unnamed.png) 
 <img src="https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/unnamed.png" width="384" height="330">
 <img src="https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/Untitled2.png" width="340" height="450">
+
+Our art assets are focused on neon hives of sorts. These work well with our enemy types that come in swarms. And our main level areas seem to come out of a futuristic world, so our contrast works.
+
+### Visual Feedback
+
+The User Interface of the project gives feedback for time, health and ammo
+
+- The damage indicator shows whether you have taken damage and where
+- The Weapon Swap menu shows available weapons for the player to use
+- The timer shows how long each section of the level has taken the player
+
 ![UI Example](https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/HCI_UI_Reference_black.png)
+<img src="https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/HCI_UI_Reference_black.png" width="600" height="338">
 
 ### Demo
 Here is a link to a short snippet of our full game
