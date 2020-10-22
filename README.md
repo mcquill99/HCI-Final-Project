@@ -24,7 +24,8 @@ Our game is based around two core concepts.
 
 For our aesthetic, we wanted to create a mixture of organic and industrial structures. Something that would contrast between geometrical structures and organic arachnid enemies to create a dystopian, "overrun" feeling
 ![Art Asset 1](https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/unnamed.png) 
-<img src="https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/Untitled2.png" width="453" height="600">
+<img src="https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/unnamed.png" width="384" height="330">
+<img src="https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/Untitled2.png" width="340" height="450">
 ![UI Example](https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/HCI_UI_Reference_black.png)
 
 ### Demo
