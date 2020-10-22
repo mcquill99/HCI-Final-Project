@@ -20,6 +20,12 @@ Our game is based around two core concepts.
 - First-Person Encounter-Based Shooter: Arena style gameplay, emphasis on destroying interesting enemies
 - Speedrun-Oriented: Complete objectives as fast as possible, and be rewarded based on how fast you can complete it
 
+### Aesthetic
+
+For our aesthetic, we wanted to create a mixture of organic and industrial structures. Something that would contrast between geometrical structures and organic arachnid enemies to create a dystopian, "overrun" feeling
+![Art Asset 1](https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/unnamed.png) ![Art Asset 2](https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/Untitled2.png)
+![UI Example](https://github.com/mcquill99/HCI-Final-Project/blob/master/HCI_Final_Project/HCI_UI_Reference_black.png)
+
 ### Demo
 Here is a link to a short snippet of our full game
 
